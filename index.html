@@ -52,6 +52,16 @@ h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 6
 @keyframes db{50%{opacity:1;transform:translateY(-3px)}}
 .err{display:flex;gap:10px;align-items:flex-start;background:rgba(255,69,58,.12);border:1px solid rgba(255,69,58,.35);color:var(--bad);border-radius:16px;padding:12px 14px;margin-top:14px;font-size:14.5px;line-height:1.5}
 .okc{animation:pop .5s}@keyframes pop{from{transform:scale(.6);opacity:0}}
+.logo{position:relative;width:104px;height:104px;margin:10px auto 18px}
+.logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--gb);box-shadow:0 10px 30px rgba(40,50,120,.22);background:var(--glass)}
+.tick{position:absolute;right:-2px;bottom:2px;width:30px;height:30px;border-radius:50%;background:var(--ok);display:grid;place-items:center;color:#fff;border:3px solid var(--bg)}
+.vids{margin-top:28px}.vids h2{font-size:19px;font-weight:700;margin:0 4px 10px}
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:2px 18px 14px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.vc{position:relative;flex:none;width:138px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;scroll-snap-align:start;display:block;background:#2a2d3e;border:1px solid var(--gb);box-shadow:0 8px 24px rgba(40,50,120,.18)}
+.vc img{width:100%;height:100%;object-fit:cover;display:block}
+.nw{position:absolute;top:8px;left:8px;background:#ff453a;color:#fff;font:600 11px/1 -apple-system,BlinkMacSystemFont,sans-serif;padding:5px 9px;border-radius:999px}
+.pl{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff}
 .foot{color:var(--mu);font-size:13px;text-align:center;line-height:1.6;margin-top:18px}
 </style>
 </head>
@@ -80,10 +90,13 @@ const bad=m=>{app.innerHTML=lock(false)+'<h1>'+m+'</h1><p class="sub">যে ল
   }catch(e){bad('ইন্টারনেট সংযোগ পরীক্ষা করুন')}
 })();
 
+const LOGO='https://i.ibb.co/s9xWmGXG/Channel-profile-pic.jpg',LOGO2='https://i.ibb.co/TMjWvSNS/Channel-profile-pic.jpg';
+const VIDS=['3ojXZqxuuAo','4236AEcK69U','BmUnO6qUt6k','6KXTZCHEnU0','lydTXf8n39k'];
 function unlocked(o){
-  app.innerHTML=lock(true)+`<h1>যাচাই সম্পন্ন</h1><p class="sub">ধন্যবাদ, আপনি সাবস্ক্রাইব করেছেন। আপনার লিংক তৈরি।</p>
-  <a class="btn good" href="${esc(o.l)}" target="_blank" rel="noopener">লিংক খুলুন</a>
-  <p class="foot">এই ফোনে এই লিংকে আবার ঢুকলে সরাসরি খুলে যাবে।</p>`;
+  app.innerHTML=`<div class="logo"><img src="${LOGO}" alt="${esc(o.ch)}" onerror="this.onerror=null;this.src='${LOGO2}'"><span class="tick okc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span></div>
+  <h1>Verified</h1><p class="sub">Thanks for subscribing to ${esc(o.ch)}.</p>
+  <a class="btn good" href="${esc(o.l)}" target="_blank" rel="noopener">${esc(o.bt||'Open Link')}</a>
+  <section class="vids"><h2>Latest videos</h2><div class="rail">${VIDS.map((id,i)=>`<a class="vc" href="https://youtube.com/shorts/${id}" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="">${i===0?'<span class="nw">Latest</span>':''}<span class="pl"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></a>`).join('')}</div></section>`;
 }
 
 function view(o){
