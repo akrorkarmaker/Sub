@@ -49,6 +49,7 @@ input:focus{border-color:var(--rd)}
     <label>ভিডিওর ইউটিউব URL</label><input type="url" id="v" placeholder="https://youtu.be/...">
     <label>আনলক হলে যে লিংক দেখাবে</label><input type="url" id="l" placeholder="https://...">
     <label>পেজের শিরোনাম</label><input type="text" id="t" placeholder="যেমন: ফ্রি টুল পেতে যাচাই করুন">
+    <label>লিংকের নাম (ইংরেজিতে, ঐচ্ছিক)</label><input type="text" id="sg" placeholder="যেমন: free-tool" autocapitalize="none">
     <label class="tg"><input type="checkbox" id="c" checked><span>স্ক্রিনশটে ফোনের ঘড়ি এখনকার সময়ের ১-২ মিনিটের মধ্যে থাকতে হবে</span></label>
     <button class="btn pri" id="go">লিংক তৈরি করুন</button>
     <p class="err hide" id="e2"></p>
@@ -68,8 +69,8 @@ firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore();
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const base=location.origin+location.pathname.replace(/[^/]*$/,'')+'index.html';
-const urlOf=id=>base+'?id='+id;
+const base=location.origin+location.pathname.replace(/[^/]*$/,'');
+const urlOf=id=>base+id;
 auth.onAuthStateChanged(u=>{$('#lg').classList.toggle('hide',!!u);$('#pn').classList.toggle('hide',!u);if(u)hist()});
 $('#in').onclick=async()=>{$('#er').classList.add('hide');try{await auth.signInWithEmailAndPassword($('#em').value.trim(),$('#pw').value)}catch(e){$('#er').classList.remove('hide')}};
 $('#pw').onkeydown=e=>{if(e.key==='Enter')$('#in').click()};
@@ -79,7 +80,9 @@ $('#go').onclick=async()=>{
   if(!o.ch||!o.l){e.textContent='চ্যানেলের নাম ও আনলক লিংক অবশ্যই দিন।';e.classList.remove('hide');return}
   e.classList.add('hide');b.disabled=true;
   try{
-    const r=await db.collection('links').add({...o,createdAt:Date.now()}),u=urlOf(r.id);
+    const sg=$('#sg').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,''),ref=sg?db.collection('links').doc(sg):db.collection('links').doc();
+    if(sg&&(await ref.get()).exists){e.textContent='এই নামটি আগে ব্যবহার হয়েছে, অন্য নাম দিন।';e.classList.remove('hide');b.disabled=false;return}
+    await ref.set({...o,createdAt:Date.now()});const u=urlOf(ref.id);
     $('#res').classList.remove('hide');$('#url').textContent=u;$('#op').href=u;$('#cp').textContent='কপি করুন';
     $('#cp').onclick=()=>navigator.clipboard.writeText(u).then(()=>{$('#cp').textContent='কপি হয়েছে'});
     hist();
