@@ -49,6 +49,7 @@ input:focus{border-color:var(--rd)}
     <label>আপনার ইউজারনেম (@হ্যান্ডেল)</label><input type="text" id="un" autocapitalize="none">
     <label>ভিডিওর ইউটিউব URL</label><input type="url" id="v" placeholder="https://youtu.be/...">
     <label>আনলক হলে যে লিংক দেখাবে</label><input type="url" id="l" placeholder="https://...">
+    <label>আনলক বাটনের লেখা (ইংরেজিতে)</label><input type="text" id="bt" placeholder="Open Link">
     <label>পেজের শিরোনাম</label><input type="text" id="t" placeholder="যেমন: ফ্রি টুল পেতে যাচাই করুন">
     <label>লিংকের নাম (ইংরেজিতে, ঐচ্ছিক)</label><input type="text" id="sg" placeholder="যেমন: free-tool" autocapitalize="none">
     <label class="tg"><input type="checkbox" id="c" checked><span>স্ক্রিনশটে স্ক্রিনশট ২ মিনিটের মধ্যে নেওয়া হতে হবে (ফোনের ঘড়ি দেখে)</span></label>
@@ -68,7 +69,7 @@ input:focus{border-color:var(--rd)}
 const firebaseConfig={apiKey:"AIzaSyBp2ZzTfXeGsMf-OFpXGidzO6FbzJceQtU",authDomain:"subscribedpro.firebaseapp.com",projectId:"subscribedpro",storageBucket:"subscribedpro.firebasestorage.app",messagingSenderId:"191293333785",appId:"1:191293333785:web:b5822d21fa81fbdd6fa588"};
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore();
-window.addEventListener('DOMContentLoaded',()=>{try{document.querySelector('#ch').value=localStorage.getItem('ch')||'Vfxbyakro';document.querySelector('#un').value=localStorage.getItem('un')||'@vfxbyakro'}catch(e){}});
+window.addEventListener('DOMContentLoaded',()=>{try{document.querySelector('#ch').value=localStorage.getItem('ch')||'Vfxbyakro';document.querySelector('#un').value=localStorage.getItem('un')||'@vfxbyakro';document.querySelector('#bt').value=localStorage.getItem('bt')||'Open Link'}catch(e){}});
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const base=location.origin+location.pathname.replace(/[^/]*$/,'');
@@ -78,9 +79,9 @@ $('#in').onclick=async()=>{$('#er').classList.add('hide');try{await auth.signInW
 $('#pw').onkeydown=e=>{if(e.key==='Enter')$('#in').click()};
 $('#out').onclick=()=>auth.signOut();
 $('#go').onclick=async()=>{
-  const o={ch:$('#ch').value.trim(),un:$('#un').value.trim(),v:$('#v').value.trim(),l:$('#l').value.trim(),t:$('#t').value.trim(),c:$('#c').checked?1:0},e=$('#e2'),b=$('#go');
+  const o={ch:$('#ch').value.trim(),bt:$('#bt').value.trim()||'Open Link',un:$('#un').value.trim(),v:$('#v').value.trim(),l:$('#l').value.trim(),t:$('#t').value.trim(),c:$('#c').checked?1:0},e=$('#e2'),b=$('#go');
   if(!o.ch||!o.l){e.textContent='চ্যানেলের নাম ও আনলক লিংক অবশ্যই দিন।';e.classList.remove('hide');return}
-  e.classList.add('hide');b.disabled=true;try{localStorage.setItem('ch',o.ch);localStorage.setItem('un',o.un)}catch(x){}
+  e.classList.add('hide');b.disabled=true;try{localStorage.setItem('ch',o.ch);localStorage.setItem('un',o.un);localStorage.setItem('bt',o.bt)}catch(x){}
   try{
     const sg=$('#sg').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,''),ref=sg?db.collection('links').doc(sg):db.collection('links').doc();
     if(sg&&(await ref.get()).exists){e.textContent='এই নামটি আগে ব্যবহার হয়েছে, অন্য নাম দিন।';e.classList.remove('hide');b.disabled=false;return}
