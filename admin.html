@@ -181,7 +181,7 @@ input:focus{border-color:rgba(10,132,255,.55);box-shadow:0 0 0 3px rgba(10,132,2
       <label>আপনার চ্যানেলের নাম (ইউটিউবে যেভাবে দেখা যায়)</label>
       <input type="text" id="ch" placeholder="যেমন: Mobin IQ">
       <label>আপনার ইউজারনেম (@হ্যান্ডেল)</label>
-      <input type="text" id="un" autocapitalize="none" placeholder="@vfxbyakro">
+      <input type="text" id="un" autocapitalize="none" placeholder="@iqimproved">
       <label>ভিডিওর ইউটিউব URL</label>
       <input type="url" id="v" placeholder="https://youtu.be/...">
       <label>আনলক হলে যে লিংক দেখাবে</label>
@@ -234,8 +234,8 @@ const auth=firebase.auth(), db=firebase.firestore();
 
 window.addEventListener('DOMContentLoaded',()=>{
   try{
-    document.querySelector('#ch').value=localStorage.getItem('ch')||'Vfxbyakro';
-    document.querySelector('#un').value=localStorage.getItem('un')||'@vfxbyakro';
+    document.querySelector('#ch').value=localStorage.getItem('ch')||'IQ Growth';
+    document.querySelector('#un').value=localStorage.getItem('un')||'@iqimproved';
     document.querySelector('#bt').value=localStorage.getItem('bt')||'Open Link';
   }catch(e){}
 });
