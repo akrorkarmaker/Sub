@@ -4,146 +4,185 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0a0c14">
-<title>অ্যাডমিন প্যানেল</title>
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#f5f5f7">
+<title>অ্যাডমিন প্যানেল - IQ Growth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#07090f;
-  --s1:rgba(22,26,40,.72);
-  --s2:rgba(30,36,56,.85);
-  --ln:rgba(255,255,255,.09);
-  --tx:#f2f4f8;
-  --mu:#8b95b0;
-  --rd:#ff3b5c;
-  --ok:#2ed3a0;
-  --blue:#0a84ff;
-  --glass:rgba(255,255,255,.04);
+/* 
+  ====================================================
+  প্রিমিয়াম Apple iOS স্টাইল হোয়াইট গ্লাস থিম 
+  ====================================================
+*/
+:root {
+  color-scheme: light only;
+  --bg: #f5f5f7;
+  --ink: #1d1d1f;
+  --mu: #86868b;
+  
+  /* গ্লাস ইফেক্ট ভ্যারিয়েবল */
+  --glass: rgba(255, 255, 255, 0.65);
+  --gb: rgba(255, 255, 255, 0.95);
+  
+  /* কালার */
+  --blue: #0071e3;
+  --blue-grad: linear-gradient(135deg, #0a84ff, #0066d6);
+  --ok: #34c759;
+  --bad: #ff3b30;
+  --purple: #af52de;
+  
+  /* বর্ডার ও ইনপুট */
+  --dash: rgba(0, 0, 0, 0.12);
+  --fld: rgba(255, 255, 255, 0.85);
+  
+  /* ডিপ শ্যাডো */
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255, 1);
 }
+
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{background:var(--bg)}
+
 body{
-  margin:0;min-height:100vh;color:var(--tx);
-  font:16px/1.65 "Hind Siliguri",system-ui,sans-serif;
+  margin:0;
+  min-height:100vh;
+  color:var(--ink);
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Hind Siliguri",system-ui,sans-serif;
   padding:max(24px,env(safe-area-inset-top)) 18px max(48px,env(safe-area-inset-bottom));
-  background:
-    radial-gradient(ellipse 80% 50% at 20% -10%,rgba(10,132,255,.18),transparent),
-    radial-gradient(ellipse 60% 40% at 90% 10%,rgba(255,59,92,.12),transparent),
-    var(--bg);
+  overflow-x:hidden;
+  background: var(--bg);
 }
 
-main{max-width:520px;margin:0 auto;animation:fadeIn .5s ease both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+/* অ্যানিমেটেড রঙিন ব্যাকগ্রাউন্ড ব্লবস */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#f5f5f7}
+.bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.6}
+.bg i:nth-child(1){width:360px;height:360px;background:#a3c9ff;top:-100px;left:-120px}
+.bg i:nth-child(2){width:320px;height:320px;background:#ffb1c1;top:20%;right:-100px}
+.bg i:nth-child(3){width:300px;height:300px;background:#a1ffd1;bottom:-100px;left:10%}
+.bg i:nth-child(4){width:260px;height:260px;background:#e2b1ff;bottom:25%;left:-100px;opacity:0.5}
 
-h1{font-size:26px;font-weight:700;margin:4px 0 2px;letter-spacing:-.3px}
-h2{font-size:16.5px;font-weight:600;margin:0 0 14px;color:#d0d6e4}
-.sub{color:var(--mu);margin:0 0 22px;font-size:14.5px}
+main{max-width:520px;margin:0 auto;animation:fadeUp .6s cubic-bezier(0.16, 1, 0.3, 1) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
+/* কোর গ্লাস কার্ড স্টাইল */
 .card{
-  background:var(--s1);
-  -webkit-backdrop-filter:blur(28px) saturate(160%);
-  backdrop-filter:blur(28px) saturate(160%);
-  border:1px solid var(--ln);
-  border-radius:22px;
-  padding:22px;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(40px) saturate(200%);
+  backdrop-filter:blur(40px) saturate(200%);
+  border:1px solid var(--gb);
+  box-shadow:var(--shadow);
+  border-radius:24px;
+  padding:24px;
   margin-bottom:18px;
-  box-shadow:0 8px 32px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.05);
 }
 
-label{display:block;font-size:13.5px;font-weight:500;color:var(--mu);margin:15px 0 6px}
+h1{font-size:26px;font-weight:700;margin:4px 0 4px;letter-spacing:-0.5px}
+h2{font-size:18px;font-weight:600;margin:0 0 16px;color:var(--ink)}
+.sub{color:var(--mu);margin:0 0 22px;font-size:14.5px;font-weight:500}
+
+label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin:16px 0 8px}
 label:first-of-type{margin-top:0}
 
 input[type=text],input[type=url],input[type=password]{
-  width:100%;padding:13px 15px;
-  background:var(--s2);border:1px solid var(--ln);
-  border-radius:14px;color:var(--tx);font:inherit;outline:0;
-  transition:border-color .2s,box-shadow .2s;
+  width:100%;padding:14px 16px;
+  background:var(--fld);border:1px solid rgba(0,0,0,0.05);
+  border-radius:14px;color:var(--ink);font:inherit;outline:0;
+  transition:all .3s;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.02);
 }
-input:focus{border-color:rgba(10,132,255,.55);box-shadow:0 0 0 3px rgba(10,132,255,.15)}
+input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(10,132,255,.15), inset 0 2px 4px rgba(0,0,0,0.02)}
 
 .tg{
   display:flex;gap:12px;align-items:center;margin-top:16px;
-  background:var(--s2);border:1px solid var(--ln);border-radius:14px;
-  padding:13px 15px;font-size:13.8px;line-height:1.5;color:var(--mu);
+  background:var(--fld);border:1px solid rgba(0,0,0,0.05);border-radius:14px;
+  padding:14px 16px;font-size:14px;line-height:1.5;color:var(--ink);font-weight:500;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.02);
 }
-.tg input{width:20px;height:20px;accent-color:var(--rd);flex:none}
+.tg input{width:22px;height:22px;accent-color:var(--blue);flex:none;cursor:pointer}
 
 .btn{
   display:block;width:100%;text-align:center;text-decoration:none;border:0;
-  border-radius:14px;padding:14px;font:600 15.5px "Hind Siliguri",sans-serif;
-  cursor:pointer;margin-top:14px;position:relative;overflow:hidden;
-  transition:transform .18s cubic-bezier(.34,1.4,.64,1),box-shadow .25s,opacity .2s;
+  border-radius:14px;padding:16px;font:600 16px -apple-system,"Hind Siliguri",sans-serif;
+  cursor:pointer;margin-top:16px;position:relative;overflow:hidden;
+  transition:transform .2s cubic-bezier(.34,1.4,.64,1),box-shadow .3s;
 }
 .btn:active{transform:scale(.97)}
-.btn:disabled{opacity:.55;pointer-events:none}
-.pri{
-  background:linear-gradient(135deg,#ff3b5c,#e11d48);
-  color:#fff;box-shadow:0 8px 24px rgba(255,59,92,.32);
-}
-.pri:hover{box-shadow:0 10px 28px rgba(255,59,92,.42)}
-.ghost{
-  background:var(--s2);color:var(--tx);border:1px solid var(--ln);
-}
-.ghost:hover{background:rgba(255,255,255,.06)}
+.btn:disabled{opacity:.5;pointer-events:none}
+
+.pri{background:var(--blue-grad);color:#fff;box-shadow:0 6px 20px rgba(0,113,227,.3)}
+.pri:hover{box-shadow:0 8px 24px rgba(0,113,227,.4)}
+.ghost{background:var(--fld);color:var(--ink);border:1px solid rgba(0,0,0,0.08);box-shadow:0 4px 12px rgba(0,0,0,0.03)}
+.ghost:hover{background:#fff}
+.danger{background:rgba(255,59,48,0.1);color:var(--bad);border:1px solid rgba(255,59,48,0.2)}
+.danger:hover{background:rgba(255,59,48,0.15)}
 
 .out{
-  word-break:break-all;background:rgba(46,211,160,.08);
-  border:1px dashed rgba(46,211,160,.35);border-radius:12px;
-  padding:13px;font-size:13px;color:var(--ok);margin-top:14px;
+  word-break:break-all;background:rgba(52,199,89,0.1);
+  border:1px dashed rgba(52,199,89,0.3);border-radius:12px;
+  padding:14px;font-size:14px;color:#248a3d;margin-top:16px;font-weight:600;
 }
 
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-.hi{
-  padding:16px 0;border-bottom:1px solid var(--ln);
-  animation:fadeIn .4s ease both;
-}
-.hi:last-child{border:0;padding-bottom:0}
-.hi b{display:block;font-weight:600;font-size:15.5px;margin-bottom:2px}
-.hi small{color:var(--mu);font-size:12.8px;display:block;line-height:1.45}
-.hi .stats{
-  display:flex;gap:14px;margin:8px 0 4px;font-size:12.5px;color:var(--mu);
-}
-.hi .stats span{display:inline-flex;align-items:center;gap:4px}
-.hi .stats strong{color:var(--ok);font-weight:600}
-.hi .two{margin-top:10px}
-.hi .btn{margin:0;padding:10px;font-size:13.5px;border-radius:11px}
-
-.hide{display:none!important}
-.err{color:#ff6b8a;font-size:13.8px;margin:10px 0 0}
-
-/* Stats summary */
+/* 
+  ====================================================
+  স্ট্যাটস গ্রিড (৪টি কার্ড)
+  ====================================================
+*/
 .stats-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;
 }
 .stat-card{
-  background:var(--s1);border:1px solid var(--ln);border-radius:18px;
-  padding:16px;text-align:center;
-  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  background:var(--glass);border:1px solid var(--gb);border-radius:20px;
+  padding:16px;text-align:center;box-shadow:var(--shadow);
+  -webkit-backdrop-filter:blur(40px) saturate(200%);backdrop-filter:blur(40px) saturate(200%);
 }
-.stat-card .num{font-size:26px;font-weight:700;color:var(--ok);line-height:1.1}
-.stat-card .lbl{font-size:12.5px;color:var(--mu);margin-top:4px}
+.stat-card .num{font-size:28px;font-weight:700;color:var(--blue);line-height:1.1;letter-spacing:-0.5px}
+.stat-card .num.green{color:var(--ok)}
+.stat-card .num.purple{color:var(--purple)}
+.stat-card .lbl{font-size:13px;color:var(--mu);margin-top:6px;font-weight:600}
+
+/* 
+  ====================================================
+  লিংক লিস্ট (হিস্ট্রি)
+  ====================================================
+*/
+.hi{
+  padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.06);
+  animation:fadeUp .4s ease both;
+}
+.hi:last-child{border:0;padding-bottom:0}
+.hi b{display:block;font-weight:700;font-size:16px;margin-bottom:4px;color:var(--ink)}
+.hi small{color:var(--mu);font-size:13px;display:block;line-height:1.45;word-break:break-all}
+.hi .stats{
+  display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;font-size:13px;color:var(--mu);font-weight:500;
+}
+.hi .stats span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.6);padding:4px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.03)}
+.hi .stats strong{color:var(--ink);font-weight:700}
+.hi .two{margin-top:12px}
+.hi .btn{margin:0;padding:10px;font-size:14px;border-radius:12px}
 
 .badge{
-  display:inline-block;background:rgba(46,211,160,.15);color:var(--ok);
-  font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:999px;
-  margin-left:6px;vertical-align:1px;
+  display:inline-block;background:rgba(52,199,89,0.15);color:#248a3d;
+  font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;
+  margin-left:8px;vertical-align:2px;
 }
-.badge.hot{background:rgba(255,59,92,.18);color:#ff6b8a}
+.badge.hot{background:rgba(255,59,48,0.12);color:var(--bad)}
 
 .top-bar{
-  display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;
 }
-.top-bar .user{font-size:13px;color:var(--mu)}
+.hide{display:none!important}
+.err{color:var(--bad);font-size:14px;margin:12px 0 0;font-weight:600;text-align:center}
 </style>
 </head>
 <body>
+<div class="bg"><i></i><i></i><i></i><i></i></div>
 <main>
   <!-- Login -->
   <div id="lg">
-    <h1>অ্যাডমিন লগইন</h1>
-    <p class="sub">শুধু আপনার জন্য। ইমেইল ও পাসওয়ার্ড দিন।</p>
+    <h1 style="text-align:center;">অ্যাডমিন লগইন</h1>
+    <p class="sub" style="text-align:center;">শুধু আপনার জন্য। ইমেইল ও পাসওয়ার্ড দিন।</p>
     <div class="card">
       <label>ইমেইল</label>
       <input type="text" id="em" autocomplete="username" placeholder="আপনার ইমেইল">
@@ -163,7 +202,7 @@ input:focus{border-color:rgba(10,132,255,.55);box-shadow:0 0 0 3px rgba(10,132,2
       </div>
     </div>
 
-    <!-- Summary Stats -->
+    <!-- Summary Stats (Updated with 4 Cards) -->
     <div class="stats-grid" id="summary">
       <div class="stat-card">
         <div class="num" id="totalLinks">0</div>
@@ -173,29 +212,44 @@ input:focus{border-color:rgba(10,132,255,.55);box-shadow:0 0 0 3px rgba(10,132,2
         <div class="num" id="totalClicks">0</div>
         <div class="lbl">মোট ক্লিক</div>
       </div>
+      <div class="stat-card">
+        <div class="num green" id="totalVClicks">0</div>
+        <div class="lbl">ভিডিও ক্লিক</div>
+      </div>
+      <div class="stat-card">
+        <div class="num purple" id="totalCClicks">0</div>
+        <div class="lbl">চ্যানেল ক্লিক</div>
+      </div>
     </div>
 
     <!-- Create new link -->
     <div class="card">
       <h2>নতুন লিংক তৈরি</h2>
-      <label>আপনার চ্যানেলের নাম (ইউটিউবে যেভাবে দেখা যায়)</label>
-      <input type="text" id="ch" placeholder="যেমন: Mobin IQ">
-      <label>আপনার ইউজারনেম (@হ্যান্ডেল)</label>
-      <input type="text" id="un" autocapitalize="none" placeholder="@iqimproved">
+      <label>চ্যানেলের নাম</label>
+      <input type="text" id="ch" placeholder="যেমন: IQ Growth" value="IQ Growth">
+      <label>ইউজারনেম (@হ্যান্ডেল)</label>
+      <input type="text" id="un" autocapitalize="none" placeholder="@iqimproved" value="@iqimproved">
       <label>ভিডিওর ইউটিউব URL</label>
       <input type="url" id="v" placeholder="https://youtu.be/...">
       <label>আনলক হলে যে লিংক দেখাবে</label>
       <input type="url" id="l" placeholder="https://...">
       <label>আনলক বাটনের লেখা (ইংরেজিতে)</label>
-      <input type="text" id="bt" placeholder="Open Link">
+      <input type="text" id="bt" placeholder="Open Link" value="Open Link">
       <label>পেজের শিরোনাম</label>
       <input type="text" id="t" placeholder="যেমন: ফ্রি টুল পেতে যাচাই করুন">
       <label>লিংকের নাম (ইংরেজিতে, ঐচ্ছিক)</label>
       <input type="text" id="sg" placeholder="যেমন: free-tool" autocapitalize="none">
+      
+      <!-- Timer & Clock Checkboxes -->
       <label class="tg">
         <input type="checkbox" id="c" checked>
-        <span>স্ক্রিনশটে স্ক্রিনশট ২ মিনিটের মধ্যে নেওয়া হতে হবে (ফোনের ঘড়ি দেখে)</span>
+        <span>স্ক্রিনশটে ফোনের ঘড়ির সময় ২ মিনিটের মধ্যে হতে হবে</span>
       </label>
+      <label class="tg">
+        <input type="checkbox" id="it" checked>
+        <span>অদৃশ্য টাইমার (বাটনে ক্লিকের পর ২ মিনিটের মধ্যে ছবি দিতে হবে)</span>
+      </label>
+
       <button class="btn pri" id="go">লিংক তৈরি করুন</button>
       <p class="err hide" id="e2"></p>
       <div id="res" class="hide">
@@ -230,170 +284,198 @@ const firebaseConfig={
   appId:"1:191293333785:web:b5822d21fa81fbdd6fa588"
 };
 firebase.initializeApp(firebaseConfig);
-const auth=firebase.auth(), db=firebase.firestore();
+const auth = firebase.auth(), db = firebase.firestore();
 
-window.addEventListener('DOMContentLoaded',()=>{
-  try{
-    document.querySelector('#ch').value=localStorage.getItem('ch')||'IQ Growth';
-    document.querySelector('#un').value=localStorage.getItem('un')||'@iqimproved';
-    document.querySelector('#bt').value=localStorage.getItem('bt')||'Open Link';
-  }catch(e){}
-});
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const base=location.origin+location.pathname.replace(/[^/]*$/,'');
-const urlOf=id=>base.replace(/admin\.html$/,'') + (base.endsWith('/')?'':'/') + id;
-// Better base for GitHub pages style
+// URL মেকার (শর্ট লিংক তৈরি করে)
 function makeUrl(id){
-  // If on admin.html, go up to root then id
   let path=location.pathname;
   if(path.endsWith('admin.html')) path=path.replace(/admin\.html$/,'');
   if(!path.endsWith('/')) path+='/';
   return location.origin + path + id;
 }
 
-auth.onAuthStateChanged(u=>{
+// Auth State পরিবর্তন হলে
+auth.onAuthStateChanged(u => {
   $('#lg').classList.toggle('hide',!!u);
   $('#pn').classList.toggle('hide',!u);
-  if(u){
-    hist();
-  }
+  if(u) { hist(); }
 });
 
-$('#in').onclick=async()=>{
+// লগইন বাটন
+$('#in').onclick=async() => {
   $('#er').classList.add('hide');
-  try{
-    await auth.signInWithEmailAndPassword($('#em').value.trim(),$('#pw').value);
-  }catch(e){
+  try {
+    await auth.signInWithEmailAndPassword($('#em').value.trim(), $('#pw').value);
+  } catch(e) {
     $('#er').classList.remove('hide');
   }
 };
-$('#pw').onkeydown=e=>{if(e.key==='Enter')$('#in').click()};
-$('#out').onclick=()=>auth.signOut();
+$('#pw').onkeydown = e => { if(e.key === 'Enter') $('#in').click(); };
+$('#out').onclick = () => auth.signOut();
 
-$('#go').onclick=async()=>{
-  const o={
-    ch:$('#ch').value.trim(),
-    bt:$('#bt').value.trim()||'Open Link',
-    un:$('#un').value.trim(),
-    v:$('#v').value.trim(),
-    l:$('#l').value.trim(),
-    t:$('#t').value.trim(),
-    c:$('#c').checked?1:0,
-    clicks:0,
-    lastClick:null
+// লিংক তৈরি করার বাটন
+$('#go').onclick = async () => {
+  const o = {
+    ch: $('#ch').value.trim(),
+    un: $('#un').value.trim(),
+    v: $('#v').value.trim(),
+    l: $('#l').value.trim(),
+    bt: $('#bt').value.trim() || 'Open Link',
+    t: $('#t').value.trim(),
+    c: $('#c').checked ? 1 : 0,
+    it: $('#it').checked ? 1 : 0, // নতুন: অদৃশ্য টাইমার ফিল্ড
+    
+    // ডেটাবেসে ক্লিকের জন্য নতুন ফিল্ডগুলো ০ (শূন্য) থেকে শুরু হবে
+    clicks: 0,
+    videoClicks: 0,
+    channelClicks: 0,
+    lastClick: null
   };
-  const e=$('#e2'), b=$('#go');
-  if(!o.ch||!o.l){
-    e.textContent='চ্যানেলের নাম ও আনলক লিংক অবশ্যই দিন।';
+  
+  const e = $('#e2'), b = $('#go');
+  if(!o.ch || !o.l){
+    e.textContent = 'চ্যানেলের নাম ও আনলক লিংক অবশ্যই দিন।';
     e.classList.remove('hide');
     return;
   }
   e.classList.add('hide');
-  b.disabled=true;
-  try{
-    localStorage.setItem('ch',o.ch);
-    localStorage.setItem('un',o.un);
-    localStorage.setItem('bt',o.bt);
-  }catch(x){}
+  b.disabled = true;
 
-  try{
-    const sg=$('#sg').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'');
-    const ref=sg ? db.collection('links').doc(sg) : db.collection('links').doc();
+  try {
+    const sg = $('#sg').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'');
+    const ref = sg ? db.collection('links').doc(sg) : db.collection('links').doc();
+    
+    // চেক করা হচ্ছে এই নামে লিংক আগে আছে কিনা
     if(sg && (await ref.get()).exists){
-      e.textContent='এই নামটি আগে ব্যবহার হয়েছে, অন্য নাম দিন।';
+      e.textContent = 'এই নামটি আগে ব্যবহার হয়েছে, অন্য নাম দিন।';
       e.classList.remove('hide');
-      b.disabled=false;
+      b.disabled = false;
       return;
     }
-    await ref.set({...o, createdAt:Date.now()});
-    const u=makeUrl(ref.id);
+    
+    await ref.set({...o, createdAt: Date.now()});
+    const u = makeUrl(ref.id);
+    
     $('#res').classList.remove('hide');
-    $('#url').textContent=u;
-    $('#op').href=u;
-    $('#cp').textContent='কপি করুন';
-    $('#cp').onclick=()=>navigator.clipboard.writeText(u).then(()=>{$('#cp').textContent='কপি হয়েছে'});
-    hist();
-  }catch(x){
-    e.textContent='সেভ হয়নি। Firestore Rules ও ইন্টারনেট পরীক্ষা করুন।';
+    $('#url').textContent = u;
+    $('#op').href = u;
+    $('#cp').textContent = 'কপি করুন';
+    $('#cp').onclick = () => navigator.clipboard.writeText(u).then(() => {
+      $('#cp').textContent = 'কপি হয়েছে';
+    });
+    
+    hist(); // লিস্ট রিফ্রেশ করা
+  } catch(x) {
+    console.error(x);
+    e.textContent = 'সেভ হয়নি। Firestore Rules ও ইন্টারনেট পরীক্ষা করুন।';
     e.classList.remove('hide');
   }
-  b.disabled=false;
+  b.disabled = false;
 };
 
+// সময় দেখানোর ফাংশন
 function timeAgo(ts){
   if(!ts) return 'কখনো না';
-  const diff=Date.now()-ts;
-  const m=Math.floor(diff/60000);
-  if(m<1) return 'এইমাত্র';
-  if(m<60) return m+' মিনিট আগে';
-  const h=Math.floor(m/60);
-  if(h<24) return h+' ঘণ্টা আগে';
-  const d=Math.floor(h/24);
-  return d+' দিন আগে';
+  const diff = Date.now() - ts;
+  const m = Math.floor(diff/60000);
+  if(m < 1) return 'এইমাত্র';
+  if(m < 60) return m + ' মিনিট আগে';
+  const h = Math.floor(m/60);
+  if(h < 24) return h + ' ঘণ্টা আগে';
+  const d = Math.floor(h/24);
+  return d + ' দিন আগে';
 }
 
+// আগের লিংকগুলোর লিস্ট (হিস্ট্রি)
 async function hist(){
-  const box=$('#hs');
-  try{
-    const sn=await db.collection('links').orderBy('createdAt','desc').limit(40).get();
-    let totalClicks=0;
-    let maxClicks=0;
+  const box = $('#hs');
+  try {
+    const sn = await db.collection('links').orderBy('createdAt','desc').limit(40).get();
+    
+    let totalClicks = 0;
+    let totalVClicks = 0;
+    let totalCClicks = 0;
+    let maxClicks = 0;
 
     if(sn.empty){
-      box.innerHTML='<p class="sub" style="margin:0">এখনো কোনো লিংক বানানো হয়নি।</p>';
-      $('#totalLinks').textContent='0';
-      $('#totalClicks').textContent='0';
-      $('#linkCountBadge').textContent='0';
+      box.innerHTML = '<p class="sub" style="margin:0">এখনো কোনো লিংক বানানো হয়নি।</p>';
+      $('#totalLinks').textContent = '0';
+      $('#totalClicks').textContent = '0';
+      $('#totalVClicks').textContent = '0';
+      $('#totalCClicks').textContent = '0';
+      $('#linkCountBadge').textContent = '0';
       return;
     }
 
-    const items=sn.docs.map(d=>{
-      const x=d.data();
-      const clicks=x.clicks||0;
-      totalClicks+=clicks;
-      if(clicks>maxClicks) maxClicks=clicks;
-      return {id:d.id, ...x, clicks};
+    // ডেটা ক্যালকুলেশন
+    const items = sn.docs.map(d => {
+      const x = d.data();
+      const clicks = x.clicks || 0;
+      const vClicks = x.videoClicks || 0;
+      const cClicks = x.channelClicks || 0;
+      
+      totalClicks += clicks;
+      totalVClicks += vClicks;
+      totalCClicks += cClicks;
+      
+      if(clicks > maxClicks) maxClicks = clicks;
+      
+      return { id: d.id, ...x, clicks, vClicks, cClicks };
     });
 
-    $('#totalLinks').textContent=items.length;
-    $('#totalClicks').textContent=totalClicks;
-    $('#linkCountBadge').textContent=items.length;
+    // সামারি আপডেট
+    $('#totalLinks').textContent = items.length;
+    $('#totalClicks').textContent = totalClicks;
+    $('#totalVClicks').textContent = totalVClicks;
+    $('#totalCClicks').textContent = totalCClicks;
+    $('#linkCountBadge').textContent = items.length;
 
-    box.innerHTML=items.map(x=>{
-      const isHot=x.clicks>0 && x.clicks===maxClicks && maxClicks>=3;
+    // লিস্ট রেন্ডার
+    box.innerHTML = items.map(x => {
+      const isHot = x.clicks > 0 && x.clicks === maxClicks && maxClicks >= 3;
       return `
       <div class="hi">
-        <b>${esc(x.t||x.ch)} ${isHot?'<span class="badge hot">সবচেয়ে বেশি ক্লিক</span>':''}</b>
-        <small>${esc(x.v||'ভিডিও লিংক নেই')}</small>
+        <b>${esc(x.t || x.ch)} ${isHot ? '<span class="badge hot">সবচেয়ে বেশি ক্লিক</span>' : ''}</b>
+        <small>${esc(x.v || 'ভিডিও লিংক নেই')}</small>
+        
         <div class="stats">
-          <span>👁 <strong>${x.clicks}</strong> ক্লিক</span>
+          <span>👁 <strong>${x.clicks}</strong> মোট</span>
+          <span>▶️ <strong>${x.vClicks}</strong> ভিডিও</span>
+          <span>📺 <strong>${x.cClicks}</strong> চ্যানেল</span>
           <span>🕒 ${timeAgo(x.lastClick)}</span>
         </div>
+        
         <div class="two">
           <button class="btn ghost" data-c="${x.id}">কপি</button>
-          <button class="btn ghost" data-d="${x.id}">মুছুন</button>
+          <button class="btn danger" data-d="${x.id}">মুছুন</button>
         </div>
       </div>`;
     }).join('');
 
-    box.querySelectorAll('[data-c]').forEach(b=>{
-      b.onclick=()=>navigator.clipboard.writeText(makeUrl(b.dataset.c)).then(()=>{
-        b.textContent='কপি হয়েছে';
-        setTimeout(()=>b.textContent='কপি',1500);
+    // কপি বাটন লজিক
+    box.querySelectorAll('[data-c]').forEach(b => {
+      b.onclick = () => navigator.clipboard.writeText(makeUrl(b.dataset.c)).then(() => {
+        b.textContent = 'কপি হয়েছে';
+        setTimeout(() => b.textContent = 'কপি', 1500);
       });
     });
-    box.querySelectorAll('[data-d]').forEach(b=>{
-      b.onclick=async()=>{
-        if(confirm('এই লিংকটি মুছবেন?')){
+    
+    // ডিলিট বাটন লজিক
+    box.querySelectorAll('[data-d]').forEach(b => {
+      b.onclick = async () => {
+        if(confirm('এই লিংকটি আপনি কি সত্যিই মুছে ফেলতে চান?')){
           await db.collection('links').doc(b.dataset.d).delete();
           hist();
         }
       };
     });
-  }catch(e){
-    box.innerHTML='<p class="err">তালিকা লোড হয়নি। Rules ঠিক আছে কি না দেখুন।</p>';
+    
+  } catch(e) {
+    console.error(e);
+    box.innerHTML = '<p class="err">তালিকা লোড হয়নি। Rules ঠিক আছে কি না দেখুন।</p>';
   }
 }
 </script>
