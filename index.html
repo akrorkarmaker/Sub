@@ -3,214 +3,241 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#e9eefb">
-<title>সাবস্ক্রাইব যাচাই</title>
+<!-- ফোনের ডার্ক মোড অন থাকলেও এটি সাদা থিম ফোর্স করবে -->
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#f5f5f7">
+<title>সাবস্ক্রাইব যাচাই - IQ Growth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#e9eefb;--ink:#1c1c1e;--mu:rgba(60,60,67,.62);
-  --glass:rgba(255,255,255,.62);--gb:rgba(255,255,255,.85);
-  --blue:#0a84ff;--ok:#30d158;--bad:#ff453a;
-  --dash:rgba(60,60,67,.28);--fld:rgba(255,255,255,.45);
-  --shadow:0 12px 40px rgba(40,50,120,.14), inset 0 1px 0 rgba(255,255,255,.6);
+/* 
+  ====================================================
+  প্রিমিয়াম Apple iOS স্টাইল হোয়াইট গ্লাস থিম 
+  ====================================================
+*/
+:root {
+  color-scheme: light only;
+  --bg: #f5f5f7;
+  --ink: #1d1d1f;
+  --mu: #86868b;
+  
+  /* গ্লাস ইফেক্ট ভ্যারিয়েবল */
+  --glass: rgba(255, 255, 255, 0.65);
+  --gb: rgba(255, 255, 255, 0.95);
+  
+  /* বাটন কালার */
+  --blue: #0071e3;
+  --blue-grad: linear-gradient(135deg, #0a84ff, #0066d6);
+  --ok: #34c759;
+  --bad: #ff3b30;
+  
+  /* বর্ডার ও ইনপুট */
+  --dash: rgba(0, 0, 0, 0.12);
+  --fld: rgba(255, 255, 255, 0.85);
+  
+  /* ডিপ অ্যাপেল শ্যাডো (কার্ডগুলো ভাসমান দেখাবে) */
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255, 1);
 }
-@media(prefers-color-scheme:dark){
-  :root{
-    --bg:#0b0d17;--ink:#f5f5f7;--mu:rgba(235,235,245,.62);
-    --glass:rgba(38,40,58,.58);--gb:rgba(255,255,255,.16);
-    --dash:rgba(235,235,245,.3);--fld:rgba(255,255,255,.07);
-    --shadow:0 12px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
-  }
-}
+
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{background:var(--bg)}
+
 body{
-  margin:0;min-height:100vh;color:var(--ink);
+  margin:0;
+  min-height:100vh;
+  color:var(--ink);
   font:16px/1.6 -apple-system,BlinkMacSystemFont,"Hind Siliguri",system-ui,sans-serif;
   padding:max(28px,env(safe-area-inset-top)) 18px max(40px,env(safe-area-inset-bottom));
   overflow-x:hidden;
+  background: var(--bg);
 }
-.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
-.bg i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.7}
-.bg i:nth-child(1){width:320px;height:320px;background:#7aa7ff;top:-90px;left:-100px}
-.bg i:nth-child(2){width:300px;height:300px;background:#c79bff;top:28%;right:-120px}
-.bg i:nth-child(3){width:280px;height:280px;background:#ff9fbd;bottom:-80px;left:8%}
-.bg i:nth-child(4){width:220px;height:220px;background:#8ef0d2;bottom:22%;left:-90px;opacity:.45}
-@media(prefers-color-scheme:dark){.bg i{opacity:.35}}
+
+/* 
+  ====================================================
+  অ্যানিমেটেড রঙিন ব্যাকগ্রাউন্ড ব্লবস (যাতে গ্লাস সুন্দর দেখায়)
+  ====================================================
+*/
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#f5f5f7}
+.bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.75}
+.bg i:nth-child(1){width:360px;height:360px;background:#a3c9ff;top:-100px;left:-120px}
+.bg i:nth-child(2){width:320px;height:320px;background:#ffb1c1;top:20%;right:-100px}
+.bg i:nth-child(3){width:300px;height:300px;background:#a1ffd1;bottom:-100px;left:10%}
+.bg i:nth-child(4){width:260px;height:260px;background:#e2b1ff;bottom:25%;left:-100px;opacity:0.6}
+
 @media(prefers-reduced-motion:no-preference){
-  .bg i{animation:fl 16s ease-in-out infinite alternate}
-  .bg i:nth-child(2){animation-duration:20s}
-  .bg i:nth-child(3){animation-duration:18s}
+  .bg i{animation:fl 20s ease-in-out infinite alternate}
+  .bg i:nth-child(2){animation-duration:25s}
+  .bg i:nth-child(3){animation-duration:22s}
 }
-@keyframes fl{to{transform:translate(28px,-22px) scale(1.07)}}
+@keyframes fl{to{transform:translate(40px,-30px) scale(1.1)}}
 
-main{max-width:440px;margin:0 auto;animation:fadeUp .55s ease both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+main{max-width:440px;margin:0 auto;animation:fadeUp .6s cubic-bezier(0.16, 1, 0.3, 1) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
+/* 
+  ====================================================
+  কোর গ্লাস কার্ড স্টাইল
+  ====================================================
+*/
 .glass{
   background:var(--glass);
-  -webkit-backdrop-filter:blur(32px) saturate(190%);
-  backdrop-filter:blur(32px) saturate(190%);
+  -webkit-backdrop-filter:blur(40px) saturate(200%);
+  backdrop-filter:blur(40px) saturate(200%);
   border:1px solid var(--gb);
   box-shadow:var(--shadow);
 }
 
+/* লক আইকন রিং */
 .ring{
-  width:96px;height:96px;border-radius:50%;
-  display:grid;place-items:center;margin:12px auto 22px;
-  color:var(--blue);transition:all .55s cubic-bezier(.34,1.4,.64,1);
+  width:100px;height:100px;border-radius:50%;
+  display:grid;place-items:center;margin:10px auto 24px;
+  color:var(--blue);transition:all .6s cubic-bezier(.34,1.4,.64,1);
+  background:var(--glass);border:1px solid var(--gb);box-shadow:var(--shadow);
+  -webkit-backdrop-filter:blur(40px) saturate(200%);
+  backdrop-filter:blur(40px) saturate(200%);
 }
-.ring.ok{color:var(--ok);transform:scale(1.05)}
-.sh{transition:transform .5s cubic-bezier(.34,1.4,.64,1);transform-origin:16px 11px}
+.ring.ok{color:var(--ok);transform:scale(1.08)}
+.sh{transition:transform .6s cubic-bezier(.34,1.4,.64,1);transform-origin:16px 11px}
 .open .sh{transform:translate(1px,-3px) rotate(-14deg)}
 
-h1{font-size:27px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 6px;letter-spacing:-.3px}
-.sub{color:var(--mu);text-align:center;margin:0 0 26px;font-size:15.5px}
+/* টাইপোগ্রাফি */
+h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 8px;letter-spacing:-0.5px}
+.sub{color:var(--mu);text-align:center;margin:0 0 26px;font-size:15.5px;font-weight:500}
 
+/* মেইন কার্ড */
 .card{
-  border-radius:26px;padding:20px;margin-bottom:16px;
-  transition:opacity .35s,transform .35s;
-  animation:cardIn .5s ease both;
+  border-radius:28px;padding:24px;margin-bottom:18px;
+  transition:opacity .4s,transform .4s;
+  animation:cardIn .6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.card:nth-of-type(2){animation-delay:.08s}
-@keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.card.dim{opacity:.42;pointer-events:none;transform:scale(.98)}
+.card:nth-of-type(2){animation-delay:.1s}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.card.dim{opacity:.4;pointer-events:none;transform:scale(.97)}
 
-.hd{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+/* কার্ড হেডার */
+.hd{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
 .no{
-  flex:none;width:34px;height:34px;border-radius:50%;
-  background:var(--blue);color:#fff;
-  display:grid;place-items:center;font-weight:600;font-size:15px;
-  box-shadow:0 4px 14px rgba(10,132,255,.35);
+  flex:none;width:36px;height:36px;border-radius:50%;
+  background:var(--blue-grad);color:#fff;
+  display:grid;place-items:center;font-weight:600;font-size:16px;
+  box-shadow:0 4px 12px rgba(0,113,227,.3);
 }
-.hd h2{font-size:17.5px;font-weight:600;margin:0;line-height:1.35}
-.hd p{margin:3px 0 0;color:var(--mu);font-size:14.2px;line-height:1.55}
+.hd h2{font-size:18px;font-weight:600;margin:0;line-height:1.35;letter-spacing:-0.3px;color:var(--ink)}
+.hd p{margin:4px 0 0;color:var(--mu);font-size:14.5px;line-height:1.55}
 
+/* 
+  ====================================================
+  প্রিমিয়াম বাটন ডিজাইন (Ripple Effect সহ)
+  ====================================================
+*/
 .btn{
   display:block;width:100%;text-align:center;text-decoration:none;border:0;
-  border-radius:999px;padding:15px;font:600 16.5px -apple-system,"Hind Siliguri",sans-serif;
-  cursor:pointer;margin-top:11px;position:relative;overflow:hidden;
-  transition:transform .18s cubic-bezier(.34,1.4,.64,1),box-shadow .25s;
+  border-radius:999px;padding:16px;font:600 16.5px -apple-system,"Hind Siliguri",sans-serif;
+  cursor:pointer;margin-top:14px;position:relative;overflow:hidden;
+  transition:transform .2s cubic-bezier(.34,1.4,.64,1),box-shadow .3s;
 }
 .btn:active{transform:scale(.96)}
 .btn::after{
-  content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.28),transparent 60%);
-  opacity:0;transition:opacity .35s;
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.4),transparent 60%);
+  opacity:0;transition:opacity .4s;
 }
 .btn:active::after{opacity:1;transition:opacity 0s}
-.pri{background:linear-gradient(135deg,#0a84ff,#0066d6);color:#fff;box-shadow:0 8px 24px rgba(10,132,255,.38)}
-.pri:hover{box-shadow:0 10px 28px rgba(10,132,255,.48)}
-.sec{background:var(--fld);color:var(--blue);border:1px solid var(--gb)}
-.good{background:linear-gradient(135deg,#30d158,#1faa45);color:#06240f;box-shadow:0 8px 24px rgba(48,209,88,.32)}
-.yt{
-  background:linear-gradient(135deg,#ff3b3b,#e11d1d);color:#fff;
-  box-shadow:0 8px 22px rgba(255,59,59,.32);margin-top:8px;
-}
+
+.pri{background:var(--blue-grad);color:#fff;box-shadow:0 6px 20px rgba(0,113,227,.3)}
+.sec{background:var(--fld);color:var(--blue);border:1px solid rgba(0,0,0,.05);box-shadow:0 4px 12px rgba(0,0,0,0.03)}
+.good{background:linear-gradient(135deg,#34c759,#248a3d);color:#fff;box-shadow:0 8px 24px rgba(52,199,89,.35);font-size:17px;padding:18px}
+.yt{background:#fff;color:#ff3b30;border:1px solid rgba(255,59,48,.2);box-shadow:0 4px 14px rgba(255,59,48,.15);margin-top:12px;}
+.yt:active{background:#fff0f0}
 
 .hide{display:none!important}
 
+/* 
+  ====================================================
+  স্ক্রিনশট আপলোড বক্স
+  ====================================================
+*/
 .drop{
-  display:block;border:1.5px dashed var(--dash);border-radius:22px;
-  padding:30px 14px;text-align:center;cursor:pointer;background:var(--fld);
-  transition:border-color .25s,background .25s,transform .2s;
+  display:block;border:2px dashed var(--dash);border-radius:24px;
+  padding:34px 14px;text-align:center;cursor:pointer;background:var(--fld);
+  transition:all .3s;
 }
-.drop:hover{border-color:var(--blue);background:rgba(10,132,255,.06)}
+.drop:hover{border-color:var(--blue);background:#f0f7ff}
 .drop:active{transform:scale(.98)}
 .drop svg{color:var(--blue);transition:transform .3s}
-.drop:hover svg{transform:translateY(-3px)}
-.drop b{display:block;margin-top:7px;font-weight:600}
-.drop span{font-size:13.5px;color:var(--mu)}
+.drop:hover svg{transform:translateY(-4px)}
+.drop b{display:block;margin-top:10px;font-weight:600;font-size:16px;color:var(--ink)}
+.drop span{font-size:13.5px;color:var(--mu);display:block;margin-top:2px}
 
-.pv{position:relative;border-radius:20px;overflow:hidden;height:210px;border:1px solid var(--gb)}
-.pv img{width:100%;height:100%;object-fit:cover;display:block}
-.scan{
-  position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue);
-  box-shadow:0 0 20px 5px rgba(10,132,255,.75);
+/* অ্যাডাপ্টিভ স্ক্যান বক্স (ছবির সাইজ অনুযায়ী বড়-ছোট হবে) */
+.pv{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.08);display:flex;justify-content:center;background:#fff;max-height:400px;box-shadow:inset 0 2px 10px rgba(0,0,0,.05)}
+.pv img{max-width:100%;max-height:400px;object-fit:contain;display:block}
+.scan{position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue);box-shadow:0 0 20px 4px rgba(0,113,227,.6);}
+
+@media(prefers-reduced-motion:no-preference){
+  .scan{animation:sc 1.8s ease-in-out infinite alternate}
 }
-@media(prefers-reduced-motion:no-preference){.scan{animation:sc 1.55s ease-in-out infinite alternate}}
 @keyframes sc{from{top:0}to{top:calc(100% - 3px)}}
 
-.stt{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 4px;font-weight:500}
-.dots{display:inline-flex;gap:4px}
-.dots i{width:6px;height:6px;border-radius:50%;background:var(--blue);opacity:.3}
-@media(prefers-reduced-motion:no-preference){
-  .dots i{animation:db 1.2s infinite}
-  .dots i:nth-child(2){animation-delay:.2s}
-  .dots i:nth-child(3){animation-delay:.4s}
-}
-@keyframes db{50%{opacity:1;transform:translateY(-3px)}}
+/* প্রোগ্রেস বার */
+.stt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:20px 0 6px;font-weight:600;font-size:15px;color:var(--ink)}
+.prog-wrap{width:100%;height:6px;background:rgba(0,0,0,.08);border-radius:10px;overflow:hidden;margin-top:6px}
+.prog-bar{height:100%;width:0%;background:var(--blue);border-radius:10px;transition:width .3s ease}
 
+/* এরর মেসেজ */
 .err{
   display:flex;gap:10px;align-items:flex-start;
-  background:rgba(255,69,58,.12);border:1px solid rgba(255,69,58,.35);
-  color:var(--bad);border-radius:16px;padding:13px 14px;margin-top:14px;
-  font-size:14.5px;line-height:1.5;animation:shake .4s ease;
+  background:rgba(255,59,48,.08);border:1px solid rgba(255,59,48,.2);
+  color:var(--bad);border-radius:16px;padding:14px;margin-top:16px;
+  font-size:14.5px;line-height:1.5;animation:shake .4s ease;font-weight:500;
 }
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
-.okc{animation:pop .5s cubic-bezier(.34,1.4,.64,1)}
-@keyframes pop{from{transform:scale(.55);opacity:0}to{transform:scale(1);opacity:1}}
+.okc{animation:pop .6s cubic-bezier(.34,1.4,.64,1)}
+@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
 
-.logo{position:relative;width:108px;height:108px;margin:10px auto 18px}
-.logo img{
-  width:100%;height:100%;border-radius:50%;object-fit:cover;
-  border:3px solid var(--gb);box-shadow:0 12px 32px rgba(40,50,120,.25);background:var(--glass);
-}
-.tick{
-  position:absolute;right:-2px;bottom:2px;width:32px;height:32px;border-radius:50%;
-  background:var(--ok);display:grid;place-items:center;color:#fff;
-  border:3px solid var(--bg);box-shadow:0 4px 12px rgba(48,209,88,.4);
-}
+/* 
+  ====================================================
+  ভেরিফাইড পেজ (লোগো ও ভিডিও)
+  ====================================================
+*/
+.logo{position:relative;width:110px;height:110px;margin:10px auto 20px}
+.logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,0.12);background:#fff;}
+.tick{position:absolute;right:-2px;bottom:2px;width:34px;height:34px;border-radius:50%;background:var(--ok);display:grid;place-items:center;color:#fff;border:3px solid #fff;box-shadow:0 4px 12px rgba(52,199,89,.4);}
 
-.vids{margin-top:30px}
-.vids h2{font-size:18.5px;font-weight:700;margin:0 4px 12px}
-.rail{
-  display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-  margin:0 -18px;padding:2px 18px 14px;scrollbar-width:none;
-}
+.vids{margin-top:34px}
+.vids h2{font-size:19px;font-weight:700;margin:0 4px 14px;letter-spacing:-0.3px;color:var(--ink)}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:4px 18px 16px;scrollbar-width:none;}
 .rail::-webkit-scrollbar{display:none}
-.vc{
-  position:relative;flex:none;width:138px;aspect-ratio:9/16;border-radius:20px;
-  overflow:hidden;scroll-snap-align:start;display:block;background:#2a2d3e;
-  border:1px solid var(--gb);box-shadow:0 8px 24px rgba(40,50,120,.18);
-  transition:transform .25s;
-}
-.vc:active{transform:scale(.96)}
+.vc{position:relative;flex:none;width:140px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;scroll-snap-align:start;display:block;background:#fff;border:1px solid rgba(0,0,0,.05);box-shadow:0 8px 20px rgba(0,0,0,.08);transition:transform .3s cubic-bezier(.34,1.4,.64,1);}
+.vc:active{transform:scale(.94)}
 .vc img{width:100%;height:100%;object-fit:cover;display:block}
-.nw{
-  position:absolute;top:8px;left:8px;background:#ff453a;color:#fff;
-  font:600 11px/1 -apple-system,BlinkMacSystemFont,sans-serif;
-  padding:5px 9px;border-radius:999px;
-}
-.pl{
-  position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;
-  background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-  display:grid;place-items:center;color:#fff;
-}
+.nw{position:absolute;top:10px;left:10px;background:#ff3b30;color:#fff;font:600 11px/1 -apple-system,sans-serif;padding:5px 10px;border-radius:999px;box-shadow:0 4px 10px rgba(255,59,48,.3);}
+.pl{position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:grid;place-items:center;color:#fff;}
 
-.foot{
-  color:var(--mu);font-size:13px;text-align:center;line-height:1.6;margin-top:20px;
-}
+.foot{color:var(--mu);font-size:13px;text-align:center;line-height:1.6;margin-top:24px;font-weight:500}
 
-/* Social Footer */
-.social{
-  display:flex;justify-content:center;gap:18px;margin:28px 0 8px;
-  animation:fadeUp .7s ease .2s both;
-}
+/* 
+  ====================================================
+  অ্যাপেল স্টাইল সোশ্যাল আইকন (প্রিমিয়াম হোয়াইট গ্লাস)
+  ====================================================
+*/
+.social{display:flex;justify-content:center;gap:16px;margin:30px 0 12px;animation:fadeUp .8s ease .2s both;}
 .social a{
-  width:48px;height:48px;border-radius:16px;
-  display:grid;place-items:center;
-  background:var(--glass);border:1px solid var(--gb);
-  box-shadow:0 6px 18px rgba(40,50,120,.12);
-  transition:transform .25s cubic-bezier(.34,1.4,.64,1),box-shadow .25s;
+  width:56px;height:56px;border-radius:18px;display:grid;place-items:center;
+  background:rgba(255,255,255,0.8); /* আরও উজ্জ্বল গ্লাস */
+  border:1px solid rgba(255,255,255,1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 #fff; /* ডিপ শ্যাডো */
+  transition:transform .3s cubic-bezier(.34,1.4,.64,1),box-shadow .3s;
   color:var(--ink);
+  -webkit-backdrop-filter:blur(20px) saturate(200%);
+  backdrop-filter:blur(20px) saturate(200%);
 }
-.social a:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 10px 26px rgba(40,50,120,.2)}
-.social a:active{transform:scale(.94)}
-.social a svg{width:22px;height:22px}
-
-.social a.yt-s{color:#ff3b3b}
+.social a:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,0.12), inset 0 1px 0 #fff}
+.social a:active{transform:scale(.92)}
+.social a svg{width:26px;height:26px}
+/* Official Icon Colors */
+.social a.yt-s{color:#ff0000}
 .social a.fb-s{color:#1877f2}
 .social a.gm-s{color:#ea4335}
 </style>
@@ -219,124 +246,243 @@ h1{font-size:27px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 6
 <div class="bg"><i></i><i></i><i></i><i></i></div>
 <main id="app"></main>
 
+<!-- লাইব্রেরি সমূহ -->
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 <script>
-const firebaseConfig={
-  apiKey:"AIzaSyBp2ZzTfXeGsMf-OFpXGidzO6FbzJceQtU",
-  authDomain:"subscribedpro.firebaseapp.com",
-  projectId:"subscribedpro",
-  storageBucket:"subscribedpro.firebasestorage.app",
-  messagingSenderId:"191293333785",
-  appId:"1:191293333785:web:b5822d21fa81fbdd6fa588"
+/* 
+  ====================================================
+  ফায়ারবেস কনফিগারেশন
+  ====================================================
+*/
+const firebaseConfig = {
+  apiKey: "AIzaSyBp2ZzTfXeGsMf-OFpXGidzO6FbzJceQtU",
+  authDomain: "subscribedpro.firebaseapp.com",
+  projectId: "subscribedpro",
+  storageBucket: "subscribedpro.firebasestorage.app",
+  messagingSenderId: "191293333785",
+  appId: "1:191293333785:web:b5822d21fa81fbdd6fa588"
 };
 firebase.initializeApp(firebaseConfig);
-const db=firebase.firestore();
-const $=s=>document.querySelector(s), app=$('#app');
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const store={
-  get(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch(e){return f}},
-  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+const db = firebase.firestore();
+const $ = s => document.querySelector(s), app = $('#app');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* 
+  ====================================================
+  সিকিউরিটি ফাংশন (লিংক XSS প্রোটেকশন)
+  ====================================================
+*/
+const safeUrl = u => (/^https?:\/\//i.test(u) || /^mailto:/i.test(u)) ? u : '#';
+
+/* 
+  ====================================================
+  লোকাল স্টোরেজ বাইপাস ব্লক (হ্যাকিং রোধে)
+  ====================================================
+*/
+const getUnlockKey = id => 'sec_' + btoa(id + '_iq_growth_2024');
+const checkUnlocked = id => {
+  try {
+    const data = JSON.parse(localStorage.getItem(getUnlockKey(id)));
+    if(data && data.exp > Date.now()) return true;
+  } catch(e){}
+  return false;
+}
+const saveUnlocked = id => {
+  try {
+    localStorage.setItem(getUnlockKey(id), JSON.stringify({ exp: Date.now() + 86400000, v: 1 })); // ২৪ ঘণ্টা মেয়াদ
+  } catch(e){}
+}
+
+/* 
+  ====================================================
+  স্ক্যানিং সাউন্ড ইফেক্ট
+  ====================================================
+*/
+function playScanSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(600, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1000, ctx.currentTime + 0.6);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.6);
+  } catch(e){}
+}
+
+/* 
+  ====================================================
+  অদৃশ্য টাইমার (২ মিনিট)
+  ====================================================
+*/
+const startTimer = () => {
+  if (!sessionStorage.getItem('tmr_' + d)) {
+    sessionStorage.setItem('tmr_' + d, Date.now());
+  }
+};
+const checkTimer = () => {
+  const start = sessionStorage.getItem('tmr_' + d);
+  if (!start) return false;
+  const diff = (Date.now() - parseInt(start)) / 1000;
+  return diff <= 120; 
 };
 
-const lock=o=>`<div class="ring glass${o?' ok':''}"><svg class="${o?'open':''}" viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path class="sh" d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>`;
+/* 
+  ====================================================
+  ইউআই কম্পোনেন্ট (লক আইকন)
+  ====================================================
+*/
+const lock = o => `
+<div class="ring glass${o ? ' ok' : ''}">
+  <svg class="${o ? 'open' : ''}" viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="11" width="14" height="9" rx="2.5"/>
+    <path class="sh" d="M8 11V8a4 4 0 0 1 8 0v3"/>
+  </svg>
+</div>`;
 
-/* Deep link helpers – try native app first */
+/* 
+  ====================================================
+  অ্যাপ ওপেন করার হেল্পার ফাংশন (ইউটিউব/ফেসবুক)
+  ====================================================
+*/
 function openYouTube(url){
-  const clean=url.replace(/^https?:\/\//,'').replace(/^www\./,'');
-  const isAndroid=/android/i.test(navigator.userAgent);
-  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const clean = url.replace(/^https?:\/\//,'').replace(/^www\./,'');
+  const isAndroid = /android/i.test(navigator.userAgent);
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
   if(isAndroid){
-    location.href=`intent://${clean}#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=${encodeURIComponent(url)};end`;
-  }else if(isIOS){
-    location.href='youtube://'+clean;
-    setTimeout(()=>{location.href=url},1600);
-  }else{
+    location.href = `intent://${clean}#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=${encodeURIComponent(url)};end`;
+  } else if(isIOS){
+    location.href = 'youtube://'+clean;
+    setTimeout(() => {location.href = url}, 1600);
+  } else {
     window.open(url,'_blank','noopener');
   }
 }
+
 function openFacebook(url){
-  const isAndroid=/android/i.test(navigator.userAgent);
-  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isAndroid = /android/i.test(navigator.userAgent);
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
   if(isAndroid){
-    location.href=`intent://#Intent;package=com.facebook.katana;scheme=https;S.browser_fallback_url=${encodeURIComponent(url)};end`;
-  }else if(isIOS){
-    location.href='fb://facewebmodal/f?href='+encodeURIComponent(url);
-    setTimeout(()=>{location.href=url},1600);
-  }else{
+    const clean = url.replace(/^https?:\/\//,'');
+    location.href = `intent://${clean}#Intent;package=com.facebook.katana;scheme=https;S.browser_fallback_url=${encodeURIComponent(url)};end`;
+  } else if(isIOS){
+    location.href = 'fb://facewebmodal/f?href='+encodeURIComponent(url);
+    setTimeout(() => {location.href = url}, 1600);
+  } else {
     window.open(url,'_blank','noopener');
   }
 }
+
 function openMail(email){
-  location.href='mailto:'+email;
+  location.href = 'mailto:' + email;
 }
 
-const SOCIAL_YOUTUBE='https://youtube.com/@iqimproved?si=7Gk009Rh2WCJ4FcA';
-const SOCIAL_FACEBOOK='https://www.facebook.com/share/1eDuveW58Z/';
-const SOCIAL_GMAIL='akror.karmaker@gmail.com';
+/* 
+  ====================================================
+  আপনার চ্যানেলের তথ্য (এখানে পরিবর্তন করুন)
+  ====================================================
+*/
+const MY_CHANNEL = 'IQ Growth';
+const MY_HANDLE = '@iqimproved';
+const SOCIAL_YOUTUBE = 'https://youtube.com/@iqimproved';
+const SOCIAL_FACEBOOK = 'https://www.facebook.com/share/1dhbwfYFVn/'; 
+const SOCIAL_GMAIL = 'akror.karmaker@gmail.com'; 
 
+const LOGO = 'https://i.ibb.co/s9xWmGXG/Channel-profile-pic.jpg'; 
+const LOGO2 = 'https://i.ibb.co/TMjWvSNS/Channel-profile-pic.jpg';
+const VIDS = ['3ojXZqxuuAo','4236AEcK69U','BmUnO6qUt6k','6KXTZCHEnU0','lydTXf8n39k']; // ভিডিও আইডিগুলো এখানে দিন
+
+/* 
+  ====================================================
+  সোশ্যাল ফুটার (অফিসিয়াল আইকন সহ)
+  ====================================================
+*/
 function socialFooter(){
-  return `<div class="social">
+  return `
+  <div class="social">
     <a href="#" class="yt-s" onclick="openYouTube('${SOCIAL_YOUTUBE}');return false;" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.3 3.5-6.3 3.5z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
     </a>
     <a href="#" class="fb-s" onclick="openFacebook('${SOCIAL_FACEBOOK}');return false;" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
     <a href="#" class="gm-s" onclick="openMail('${SOCIAL_GMAIL}');return false;" aria-label="Gmail">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.46v13.08c0 .8-.65 1.46-1.46 1.46H1.46A1.46 1.46 0 0 1 0 18.54V5.46C0 4.65.65 4 1.46 4h21.08c.8 0 1.46.65 1.46 1.46zM12 13.08L1.9 5.9h20.2L12 13.08zm0 1.84l4.1-2.94 6.44 4.6H1.46l6.44-4.6L12 14.92z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
     </a>
   </div>
   <p class="foot">যাচাই আপনার ফোনেই হয়। ছবি কোথাও পাঠানো হয় না।</p>`;
 }
 
-const d=new URLSearchParams(location.search).get('id');
-let cfg=null;
+const d = new URLSearchParams(location.search).get('id');
+let cfg = null;
 
-const bad=m=>{
-  app.innerHTML=lock(false)+`<h1>${m}</h1><p class="sub">যে লিংক থেকে এসেছেন সেটি আবার খুলুন।</p>`+socialFooter();
+const bad = m => {
+  app.innerHTML = lock(false) + `<h1>${m}</h1><p class="sub">যে লিংক থেকে এসেছেন সেটি আবার খুলুন।</p>` + socialFooter();
 };
 
-(async()=>{
-  if(!d){bad('লিংকটি সঠিক নয়');return}
-  app.innerHTML=lock(false)+'<p class="sub">লোড হচ্ছে...</p>';
-  try{
-    const sn=await db.collection('links').doc(d).get();
-    if(!sn.exists||!sn.data().l){bad('লিংকটি সঠিক নয়');return}
-    cfg=sn.data();
+/* 
+  ====================================================
+  মেইন অ্যাপ্লিকেশন লজিক
+  ====================================================
+*/
+(async () => {
+  if(!d) { bad('লিংকটি সঠিক নয়'); return; }
+  app.innerHTML = lock(false) + '<p class="sub">লোড হচ্ছে...</p>';
+  
+  try {
+    const sn = await db.collection('links').doc(d).get();
+    if(!sn.exists || !sn.data().l) { bad('লিংকটি সঠিক নয়'); return; }
+    cfg = sn.data();
 
-    // Record click
-    try{
-      await db.collection('links').doc(d).update({
-        clicks: firebase.firestore.FieldValue.increment(1),
-        lastClick: Date.now()
-      });
-    }catch(e){}
+    // ফেক ক্লিক ব্লক (রিফ্রেশ দিলে ক্লিক বাড়বে না)
+    if(!sessionStorage.getItem('clk_' + d)) {
+      sessionStorage.setItem('clk_' + d, '1');
+      try {
+        await db.collection('links').doc(d).update({
+          clicks: firebase.firestore.FieldValue.increment(1),
+          lastClick: Date.now()
+        });
+      } catch(e) {}
+    }
 
-    store.get('ok:'+d,false)?unlocked(cfg):view(cfg);
-  }catch(e){bad('ইন্টারনেট সংযোগ পরীক্ষা করুন')}
+    // চেক করা হচ্ছে আগে ভেরিফাই করেছে কি না
+    checkUnlocked(d) ? unlocked(cfg) : view(cfg);
+    
+  } catch(e) { 
+    bad('ইন্টারনেট সংযোগ পরীক্ষা করুন'); 
+  }
 })();
 
-const LOGO='https://i.ibb.co/s9xWmGXG/Channel-profile-pic.jpg';
-const LOGO2='https://i.ibb.co/TMjWvSNS/Channel-profile-pic.jpg';
-const VIDS=['3ojXZqxuuAo','4236AEcK69U','BmUnO6qUt6k','6KXTZCHEnU0','lydTXf8n39k'];
-
+/* 
+  ====================================================
+  ভেরিফাইড ভিউ (আনলক হওয়ার পর)
+  ====================================================
+*/
 function unlocked(o){
-  app.innerHTML=`
+  app.innerHTML = `
   <div class="logo">
-    <img src="${LOGO}" alt="${esc(o.ch)}" onerror="this.onerror=null;this.src='${LOGO2}'">
+    <img src="${LOGO}" alt="${esc(MY_CHANNEL)}" onerror="this.onerror=null;this.src='${LOGO2}'">
     <span class="tick okc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>
   </div>
   <h1>Verified</h1>
-  <p class="sub">Thanks for subscribing to ${esc(o.ch)}.</p>
-  <a class="btn good" href="${esc(o.l)}" target="_blank" rel="noopener">${esc(o.bt||'Open Link')}</a>
+  <p class="sub">Thanks for subscribing to ${esc(MY_CHANNEL)}.</p>
+  <a class="btn good" href="${safeUrl(o.l)}" target="_blank" rel="noopener">${esc(o.bt || 'Open Link')}</a>
+  
   <section class="vids">
     <h2>Latest videos</h2>
-    <div class="rail">${VIDS.map((id,i)=>`
+    <div class="rail">
+      ${VIDS.map((id, i) => `
       <a class="vc" href="https://youtube.com/shorts/${id}" target="_blank" rel="noopener" onclick="openYouTube('https://youtube.com/shorts/${id}');return false;">
         <img loading="lazy" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="">
-        ${i===0?'<span class="nw">Latest</span>':''}
+        ${i === 0 ? '<span class="nw">Latest</span>' : ''}
         <span class="pl"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </a>`).join('')}
     </div>
@@ -345,22 +491,24 @@ function unlocked(o){
 }
 
 function channelUrl(o){
-  if(o.un){
-    const handle=o.un.startsWith('@')?o.un:'@'+o.un;
-    return 'https://youtube.com/'+handle;
-  }
-  return SOCIAL_YOUTUBE;
+  const handle = MY_HANDLE.startsWith('@') ? MY_HANDLE : '@' + MY_HANDLE;
+  return 'https://youtube.com/' + handle;
 }
 
+/* 
+  ====================================================
+  মেইন ভিউ (ভেরিফিকেশন পেজ)
+  ====================================================
+*/
 function view(o){
-  const hasV=!!o.v;
-  const chUrl=channelUrl(o);
+  const hasV = !!o.v;
+  const chUrl = channelUrl(o);
 
-  app.innerHTML=lock(false)+`
-  <h1>${esc(o.t||'ফ্রি লিংক পেতে যাচাই করুন')}</h1>
-  <p class="sub">${hasV?'দুটি ধাপ পার হলেই আপনার লিংক খুলে যাবে।':'একটি ধাপ পার হলেই আপনার লিংক খুলে যাবে।'}</p>
+  app.innerHTML = lock(false) + `
+  <h1>${esc(o.t || 'ফ্রি লিংক পেতে যাচাই করুন')}</h1>
+  <p class="sub">${hasV ? 'দুটি ধাপ পার হলেই আপনার লিংক খুলে যাবে।' : 'একটি ধাপ পার হলেই আপনার লিংক খুলে যাবে।'}</p>
 
-  ${hasV?`
+  ${hasV ? `
   <section class="card glass" id="s1">
     <div class="hd">
       <span class="no">১</span>
@@ -369,138 +517,234 @@ function view(o){
         <p>ভিডিও খুলে একটি কমেন্ট লিখে এখানে ফিরে আসুন।</p>
       </div>
     </div>
-    <a class="btn pri" id="ov" href="${esc(o.v)}" target="_blank" rel="noopener">ভিডিও খুলুন</a>
+    <a class="btn pri" id="ov" href="${safeUrl(o.v)}" target="_blank" rel="noopener">ভিডিও খুলুন</a>
     <button class="btn sec hide" id="d1">কমেন্ট করেছি, এগিয়ে যাই</button>
-  </section>`:''}
+  </section>` : ''}
 
-  <section class="card glass${hasV?' dim':''}" id="s2">
+  <section class="card glass${hasV ? ' dim' : ''}" id="s2">
     <div class="hd">
-      <span class="no">${hasV?'২':'১'}</span>
+      <span class="no">${hasV ? '২' : '১'}</span>
       <div>
         <h2>সাবস্ক্রাইব যাচাই করুন</h2>
-        <p>ইউটিউব অ্যাপে <b>${esc(o.ch)}</b> চ্যানেলের পেজ খুলে একটি পুরো স্ক্রিনশট নিন এবং এখানে দিন।</p>
+        <p>ইউটিউব অ্যাপে <b>${esc(MY_CHANNEL)}</b> চ্যানেলের পেজ খুলে একটি পুরো স্ক্রিনশট নিন এবং এখানে দিন।</p>
       </div>
     </div>
 
     <button class="btn yt" id="goChannel">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px;margin-right:6px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.3 3.5-6.3 3.5z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px;margin-right:6px"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       চ্যানেলে যান
     </button>
 
     <input type="file" id="f" accept="image/*" class="hide">
     <label class="drop" for="f" id="dz">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0 4 4m-4-4L8 8M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0 4 4m-4-4L8 8M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
       <b>স্ক্রিনশট বেছে নিন</b>
       <span>গ্যালারি থেকে ছবি দিন</span>
     </label>
+    
     <div id="sc" class="pv hide"><img id="pv" alt=""><div class="scan"></div></div>
-    <div id="st" class="stt hide"><span>সাবস্ক্রাইব যাচাই হচ্ছে</span><span class="dots"><i></i><i></i><i></i></span></div>
+    
+    <div id="st" class="stt hide">
+      <div>সাবস্ক্রাইব যাচাই হচ্ছে <span id="prog" style="color:var(--blue)">0%</span></div>
+      <div class="prog-wrap"><div class="prog-bar" id="pbar"></div></div>
+    </div>
+    
     <div id="er" class="err hide"></div>
   </section>
 
   ${socialFooter()}`;
 
-  // Button ripple position
-  document.querySelectorAll('.btn').forEach(b=>{
-    b.addEventListener('pointerdown',e=>{
-      const r=b.getBoundingClientRect();
-      b.style.setProperty('--x',(e.clientX-r.left)+'px');
-      b.style.setProperty('--y',(e.clientY-r.top)+'px');
+  // বাটনের রিপল ইফেক্ট (ক্লিক করলে ঢেউয়ের মতো হবে)
+  document.querySelectorAll('.btn').forEach(b => {
+    b.addEventListener('pointerdown', e => {
+      const r = b.getBoundingClientRect();
+      b.style.setProperty('--x', (e.clientX - r.left) + 'px');
+      b.style.setProperty('--y', (e.clientY - r.top) + 'px');
     });
   });
 
+  // ভিডিও বাটন লজিক
   if(hasV){
-    $('#ov').onclick=e=>{
+    $('#ov').onclick = e => {
       e.preventDefault();
+      startTimer();
+      if(!sessionStorage.getItem('vclk_' + d)) {
+        sessionStorage.setItem('vclk_' + d, '1');
+        db.collection('links').doc(d).update({ videoClicks: firebase.firestore.FieldValue.increment(1) }).catch(()=>{});
+      }
       openYouTube(o.v);
-      setTimeout(()=>$('#d1').classList.remove('hide'),700);
+      setTimeout(() => $('#d1').classList.remove('hide'), 700);
     };
-    $('#d1').onclick=()=>{
+    $('#d1').onclick = () => {
       $('#s2').classList.remove('dim');
       $('#s1').classList.add('dim');
-      $('#s2').scrollIntoView({behavior:'smooth',block:'center'});
+      $('#s2').scrollIntoView({behavior:'smooth', block:'center'});
     };
   }
 
-  $('#goChannel').onclick=()=>openYouTube(chUrl);
-  $('#f').onchange=e=>e.target.files[0]&&verify(o,e.target.files[0]);
+  // চ্যানেল বাটন লজিক
+  $('#goChannel').onclick = () => {
+    startTimer();
+    if(!sessionStorage.getItem('cclk_' + d)) {
+      sessionStorage.setItem('cclk_' + d, '1');
+      db.collection('links').doc(d).update({ channelClicks: firebase.firestore.FieldValue.increment(1) }).catch(()=>{});
+    }
+    openYouTube(chUrl);
+  };
+
+  // ফাইল আপলোড ইভেন্ট
+  $('#f').onchange = e => e.target.files[0] && verify(o, e.target.files[0]);
 }
 
+/* 
+  ====================================================
+  হ্যাশ জেনারেটর (ফাইল এবং টেক্সট)
+  ====================================================
+*/
 async function sha(f){
-  const h=await crypto.subtle.digest('SHA-256',await f.arrayBuffer());
-  return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('');
+  const h = await crypto.subtle.digest('SHA-256', await f.arrayBuffer());
+  return [...new Uint8Array(h)].map(x => x.toString(16).padStart(2,'0')).join('');
 }
-const norm=s=>s.toLowerCase().replace(/[^a-z0-9\u0980-\u09ff]/g,'');
-function chanOK(text,name){
-  const t=norm(text),w0=norm(name);
-  if(w0&&t.includes(w0))return true;
-  const w=name.toLowerCase().split(/\s+/).map(norm).filter(x=>x.length>=2);
-  return w.length>1&&w.filter(x=>t.includes(x)).length/w.length>=.6;
+
+async function shaStr(str){
+  const msgBuffer = new TextEncoder().encode(str);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
-function userOK(text,un){
-  const u=norm(String(un).replace('@',''));
-  return !u||norm(text).includes(u);
+
+/* 
+  ====================================================
+  টেক্সট ম্যাচিং লজিক (OCR এর জন্য)
+  ====================================================
+*/
+const norm = s => s.toLowerCase().replace(/[^a-z0-9\u0980-\u09ff]/g,'');
+
+function chanOK(text, name){
+  const t = norm(text), w0 = norm(name);
+  if(w0 && t.includes(w0)) return true;
+  const w = name.toLowerCase().split(/\s+/).map(norm).filter(x => x.length >= 2);
+  return w.length > 1 && w.filter(x => t.includes(x)).length / w.length >= .6;
 }
+
+function userOK(text, un){
+  const u = norm(String(un).replace('@',''));
+  return !u || norm(text).includes(u);
+}
+
 function clockOK(text){
-  const n=new Date(),m=n.getHours()*60+n.getMinutes(),re=/(\d{1,2})\s*[:.]\s*(\d{2})/g;
+  const n = new Date(), m = n.getHours() * 60 + n.getMinutes(), re = /(\d{1,2})\s*[:.]\s*(\d{2})/g;
   let x;
-  while((x=re.exec(text))){
-    const h=+x[1],mi=+x[2];
-    if(h>23||mi>59)continue;
-    let df=Math.abs(((h%12)*60+mi)-(m%720));
-    df=Math.min(df,720-df);
-    if(df<=2)return true;
+  while((x = re.exec(text))){
+    const h = +x[1], mi = +x[2];
+    if(h > 23 || mi > 59) continue;
+    let df = Math.abs(((h % 12) * 60 + mi) - (m % 720));
+    df = Math.min(df, 720 - df);
+    if(df <= 2) return true;
   }
   return false;
 }
 
-async function verify(o,file){
-  const st=$('#st'),er=$('#er'),pv=$('#pv');
-  pv.src=URL.createObjectURL(file);
-  $('#dz').classList.add('hide');er.classList.add('hide');
-  $('#sc').classList.remove('hide');st.classList.remove('hide');
+/* 
+  ====================================================
+  মূল ভেরিফिकेशन লজিক (OCR ও টেক্সট ফিঙ্গারপ্রিন্ট)
+  ====================================================
+*/
+async function verify(o, file){
+  const st = $('#st'), er = $('#er'), pv = $('#pv');
+  
+  // ছবি প্রিভিউ দেখানো
+  pv.src = URL.createObjectURL(file);
+  $('#dz').classList.add('hide');
+  er.classList.add('hide');
+  $('#sc').classList.remove('hide');
+  st.classList.remove('hide');
+  
+  playScanSound(); // সাউন্ড বাজানো
 
-  const fail=()=>{
-    $('#sc').classList.add('hide');st.classList.add('hide');
-    er.innerHTML='<span>যাচাই করা যায়নি। ইউটিউব অ্যাপে চ্যানেলের পেজের পরিষ্কার ও পুরো স্ক্রিনশট নিয়ে আবার চেষ্টা করুন।</span>';
+  // ফেইল করার ফাংশন
+  const fail = () => {
+    $('#sc').classList.add('hide');
+    st.classList.add('hide');
+    er.innerHTML = '<span>যাচাই করা যায়নি। সঠিক ও পরিষ্কার স্ক্রিনশট নিয়ে আবার চেষ্টা করুন।</span>';
     er.classList.remove('hide');
     $('#dz').classList.remove('hide');
-    $('#dz').querySelector('b').textContent='আবার চেষ্টা করুন';
-    $('#f').value='';
+    $('#dz').querySelector('b').textContent = 'আবার চেষ্টা করুন';
+    $('#f').value = '';
+    $('#pbar').style.width = '0%';
+    $('#prog').textContent = '0%';
   };
 
-  try{
-    const hash=(await sha(file))+'_'+d;
-    const uref=db.collection('used').doc(hash);
-    if((await uref.get()).exists)return fail();
+  // গোপন ২ মিনিটের টাইমার চেক
+  if (o.it && !checkTimer()) {
+    return fail();
+  }
 
-    const w=await Tesseract.createWorker('eng',1);
-    const bmp=await createImageBitmap(file);
-    const full=(await w.recognize(file)).data.text;
-    let strip='';
+  try {
+    // ফাইলের হ্যাশ তৈরি
+    const hash = (await sha(file)) + '_' + d; 
+    const uref = db.collection('used').doc(hash);
+    if((await uref.get()).exists) return fail();
+
+    // OCR শুরু (ইংরেজি + বাংলা)
+    const w = await Tesseract.createWorker('eng+ben', 1);
+    const bmp = await createImageBitmap(file);
+    
+    // ছবি স্ক্যান করা (প্রোগ্রেস বার সহ)
+    const res = await w.recognize(file, {}, { 
+      progress: (m) => {
+        if (m.status === 'recognizing text') {
+          const pct = Math.round(m.progress * 100);
+          $('#prog').textContent = pct + '%';
+          $('#pbar').style.width = pct + '%';
+        }
+      }
+    });
+    const full = res.data.text;
+
+    // ফোনের ঘড়ি (Time) চেক করা
+    let strip = '';
     if(o.c){
-      const c=document.createElement('canvas'),h=Math.round(bmp.height*.07),s=2;
-      c.width=bmp.width*s;c.height=h*s;
-      const g=c.getContext('2d');
-      g.filter='grayscale(1) contrast(1.4)';
-      g.drawImage(bmp,0,0,bmp.width,h,0,0,c.width,c.height);
-      await w.setParameters({tessedit_pageseg_mode:'11',tessedit_char_whitelist:'0123456789:. APMapm'});
-      strip=(await w.recognize(c)).data.text;
+      const c = document.createElement('canvas'), h = Math.round(bmp.height * .07), s = 2;
+      c.width = bmp.width * s; c.height = h * s;
+      const g = c.getContext('2d');
+      g.filter = 'grayscale(1) contrast(1.4)';
+      g.drawImage(bmp, 0, 0, bmp.width, h, 0, 0, c.width, c.height);
+      await w.setParameters({tessedit_pageseg_mode:'11', tessedit_char_whitelist:'0123456789:. APMapm'});
+      strip = (await w.recognize(c)).data.text;
     }
     await w.terminate();
 
-    const ok=chanOK(full,o.ch)&&userOK(full,o.un)&&
-      (/\bsubscribed\b/i.test(full)||/সাবস্ক্রাইব(ড| করা)/.test(full))&&
-      (!o.c||clockOK(strip)||clockOK(full.split('\n').slice(0,4).join(' ')));
+    // টেক্সট ফিঙ্গারপ্রিন্ট (একই লেখা দুইবার আটকাতে)
+    const cleanText = full.replace(/\s+/g, '').toLowerCase();
+    const textHash = await shaStr(cleanText);
+    const tref = db.collection('used').doc('txt_' + textHash);
+    if((await tref.get()).exists) return fail();
 
-    if(!ok)return fail();
+    // সবকিছু চেক করা (নাম, হ্যান্ডেল, সাবস্ক্রাইব এবং ঘড়ি)
+    const ok = chanOK(full, MY_CHANNEL) && userOK(full, MY_HANDLE) &&
+      (/\bsubscribed\b/i.test(full) || /সাবস্ক্রাইব(ড| করা)/.test(full)) &&
+      (!o.c || clockOK(strip) || clockOK(full.split('\n').slice(0,4).join(' ')));
 
-    await uref.set({t:Date.now()});
-    store.set('ok:'+d,true);
-    st.innerHTML='<span class="okc" style="color:var(--ok)">যাচাই সফল</span>';
-    $('.scan').style.display='none';
-    setTimeout(()=>unlocked(o),900);
-  }catch(e){fail()}
+    if(!ok) return fail();
+
+    // ডেটাবেসে সেভ করা
+    await uref.set({t: Date.now()});
+    await tref.set({t: Date.now()});
+
+    // আনলক করে সেভ করা
+    saveUnlocked(d);
+    
+    st.innerHTML = '<span class="okc" style="color:var(--ok)">যাচাই সফল</span>';
+    $('.scan').style.display = 'none';
+    
+    // ১ সেকেন্ড পর আনলক পেজ দেখানো
+    setTimeout(() => unlocked(o), 900);
+    
+  } catch(e) {
+    console.error(e);
+    fail();
+  }
 }
 </script>
 </body>
