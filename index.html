@@ -52,11 +52,7 @@ body{
   background: var(--bg);
 }
 
-/* 
-  ====================================================
-  অ্যানিমেটেড রঙিন ব্যাকগ্রাউন্ড ব্লবস (যাতে গ্লাস সুন্দর দেখায়)
-  ====================================================
-*/
+/* অ্যানিমেটেড রঙিন ব্যাকগ্রাউন্ড ব্লবস */
 .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#f5f5f7}
 .bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.75}
 .bg i:nth-child(1){width:360px;height:360px;background:#a3c9ff;top:-100px;left:-120px}
@@ -74,11 +70,7 @@ body{
 main{max-width:440px;margin:0 auto;animation:fadeUp .6s cubic-bezier(0.16, 1, 0.3, 1) both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
-/* 
-  ====================================================
-  কোর গ্লাস কার্ড স্টাইল
-  ====================================================
-*/
+/* কোর গ্লাস কার্ড স্টাইল */
 .glass{
   background:var(--glass);
   -webkit-backdrop-filter:blur(40px) saturate(200%);
@@ -125,11 +117,7 @@ h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 8
 .hd h2{font-size:18px;font-weight:600;margin:0;line-height:1.35;letter-spacing:-0.3px;color:var(--ink)}
 .hd p{margin:4px 0 0;color:var(--mu);font-size:14.5px;line-height:1.55}
 
-/* 
-  ====================================================
-  প্রিমিয়াম বাটন ডিজাইন (Ripple Effect সহ)
-  ====================================================
-*/
+/* প্রিমিয়াম বাটন ডিজাইন (Ripple Effect সহ) */
 .btn{
   display:block;width:100%;text-align:center;text-decoration:none;border:0;
   border-radius:999px;padding:16px;font:600 16.5px -apple-system,"Hind Siliguri",sans-serif;
@@ -152,11 +140,7 @@ h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 8
 
 .hide{display:none!important}
 
-/* 
-  ====================================================
-  স্ক্রিনশট আপলোড বক্স
-  ====================================================
-*/
+/* স্ক্রিনশট আপলোড বক্স */
 .drop{
   display:block;border:2px dashed var(--dash);border-radius:24px;
   padding:34px 14px;text-align:center;cursor:pointer;background:var(--fld);
@@ -169,7 +153,7 @@ h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 8
 .drop b{display:block;margin-top:10px;font-weight:600;font-size:16px;color:var(--ink)}
 .drop span{font-size:13.5px;color:var(--mu);display:block;margin-top:2px}
 
-/* অ্যাডাপ্টিভ স্ক্যান বক্স (ছবির সাইজ অনুযায়ী বড়-ছোট হবে) */
+/* অ্যাডাপ্টিভ স্ক্যান বক্স */
 .pv{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.08);display:flex;justify-content:center;background:#fff;max-height:400px;box-shadow:inset 0 2px 10px rgba(0,0,0,.05)}
 .pv img{max-width:100%;max-height:400px;object-fit:contain;display:block}
 .scan{position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue);box-shadow:0 0 20px 4px rgba(0,113,227,.6);}
@@ -196,11 +180,7 @@ h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 8
 .okc{animation:pop .6s cubic-bezier(.34,1.4,.64,1)}
 @keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
 
-/* 
-  ====================================================
-  ভেরিফাইড পেজ (লোগো ও ভিডিও)
-  ====================================================
-*/
+/* ভেরিফাইড পেজ (লোগো ও ভিডিও) */
 .logo{position:relative;width:110px;height:110px;margin:10px auto 20px}
 .logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,0.12);background:#fff;}
 .tick{position:absolute;right:-2px;bottom:2px;width:34px;height:34px;border-radius:50%;background:var(--ok);display:grid;place-items:center;color:#fff;border:3px solid #fff;box-shadow:0 4px 12px rgba(52,199,89,.4);}
@@ -217,17 +197,13 @@ h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 8
 
 .foot{color:var(--mu);font-size:13px;text-align:center;line-height:1.6;margin-top:24px;font-weight:500}
 
-/* 
-  ====================================================
-  অ্যাপেল স্টাইল সোশ্যাল আইকন (প্রিমিয়াম হোয়াইট গ্লাস)
-  ====================================================
-*/
+/* অ্যাপেল স্টাইল সোশ্যাল আইকন */
 .social{display:flex;justify-content:center;gap:16px;margin:30px 0 12px;animation:fadeUp .8s ease .2s both;}
 .social a{
   width:56px;height:56px;border-radius:18px;display:grid;place-items:center;
-  background:rgba(255,255,255,0.8); /* আরও উজ্জ্বল গ্লাস */
+  background:rgba(255,255,255,0.8);
   border:1px solid rgba(255,255,255,1);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 #fff; /* ডিপ শ্যাডো */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 #fff;
   transition:transform .3s cubic-bezier(.34,1.4,.64,1),box-shadow .3s;
   color:var(--ink);
   -webkit-backdrop-filter:blur(20px) saturate(200%);
@@ -236,7 +212,6 @@ h1{font-size:28px;line-height:1.3;font-weight:700;text-align:center;margin:0 0 8
 .social a:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,0.12), inset 0 1px 0 #fff}
 .social a:active{transform:scale(.92)}
 .social a svg{width:26px;height:26px}
-/* Official Icon Colors */
 .social a.yt-s{color:#ff0000}
 .social a.fb-s{color:#1877f2}
 .social a.gm-s{color:#ea4335}
@@ -292,7 +267,7 @@ const checkUnlocked = id => {
 }
 const saveUnlocked = id => {
   try {
-    localStorage.setItem(getUnlockKey(id), JSON.stringify({ exp: Date.now() + 86400000, v: 1 })); // ২৪ ঘণ্টা মেয়াদ
+    localStorage.setItem(getUnlockKey(id), JSON.stringify({ exp: Date.now() + 86400000, v: 1 })); 
   } catch(e){}
 }
 
@@ -387,18 +362,18 @@ function openMail(email){
 
 /* 
   ====================================================
-  আপনার চ্যানেলের তথ্য (এখানে পরিবর্তন করুন)
+  আপনার চ্যানেলের তথ্য
   ====================================================
 */
 const MY_CHANNEL = 'IQ Growth';
 const MY_HANDLE = '@iqimproved';
 const SOCIAL_YOUTUBE = 'https://youtube.com/@iqimproved';
-const SOCIAL_FACEBOOK = 'https://www.facebook.com/share/1dhbwfYFVn/'; 
+const SOCIAL_FACEBOOK = 'https://www.facebook.com/share/1eDuveW58Z/'; 
 const SOCIAL_GMAIL = 'akror.karmaker@gmail.com'; 
 
 const LOGO = 'https://i.ibb.co/s9xWmGXG/Channel-profile-pic.jpg'; 
 const LOGO2 = 'https://i.ibb.co/TMjWvSNS/Channel-profile-pic.jpg';
-const VIDS = ['3ojXZqxuuAo','4236AEcK69U','BmUnO6qUt6k','6KXTZCHEnU0','lydTXf8n39k']; // ভিডিও আইডিগুলো এখানে দিন
+const VIDS = ['3ojXZqxuuAo','4236AEcK69U','BmUnO6qUt6k','6KXTZCHEnU0','lydTXf8n39k'];
 
 /* 
   ====================================================
@@ -442,7 +417,6 @@ const bad = m => {
     if(!sn.exists || !sn.data().l) { bad('লিংকটি সঠিক নয়'); return; }
     cfg = sn.data();
 
-    // ফেক ক্লিক ব্লক (রিফ্রেশ দিলে ক্লিক বাড়বে না)
     if(!sessionStorage.getItem('clk_' + d)) {
       sessionStorage.setItem('clk_' + d, '1');
       try {
@@ -453,7 +427,6 @@ const bad = m => {
       } catch(e) {}
     }
 
-    // চেক করা হচ্ছে আগে ভেরিফাই করেছে কি না
     checkUnlocked(d) ? unlocked(cfg) : view(cfg);
     
   } catch(e) { 
@@ -554,7 +527,7 @@ function view(o){
 
   ${socialFooter()}`;
 
-  // বাটনের রিপল ইফেক্ট (ক্লিক করলে ঢেউয়ের মতো হবে)
+  // বাটনের রিপল ইফেক্ট
   document.querySelectorAll('.btn').forEach(b => {
     b.addEventListener('pointerdown', e => {
       const r = b.getBoundingClientRect();
@@ -647,103 +620,128 @@ function clockOK(text){
 
 /* 
   ====================================================
-  মূল ভেরিফिकेशन লজিক (OCR ও টেক্সট ফিঙ্গারপ্রিন্ট)
+  মূল ভেরিফিকেশন লজিক (OCR ও টেক্সট ফিঙ্গারপ্রিন্ট) - ফিক্সড
   ====================================================
 */
 async function verify(o, file){
-  const st = $('#st'), er = $('#er'), pv = $('#pv');
+  const st = $('#st'), er = $('#er'), pv = $('#pv'), prog = $('#prog'), pbar = $('#pbar');
   
-  // ছবি প্রিভিউ দেখানো
   pv.src = URL.createObjectURL(file);
-  $('#dz').classList.add('hide');
-  er.classList.add('hide');
-  $('#sc').classList.remove('hide');
-  st.classList.remove('hide');
+  $('#dz').classList.add('hide'); er.classList.add('hide');
+  $('#sc').classList.remove('hide'); st.classList.remove('hide');
   
-  playScanSound(); // সাউন্ড বাজানো
+  prog.textContent = 'প্রস্তুত হচ্ছে...';
+  pbar.style.width = '5%';
+  
+  playScanSound();
 
-  // ফেইল করার ফাংশন
-  const fail = () => {
-    $('#sc').classList.add('hide');
-    st.classList.add('hide');
-    er.innerHTML = '<span>যাচাই করা যায়নি। সঠিক ও পরিষ্কার স্ক্রিনশট নিয়ে আবার চেষ্টা করুন।</span>';
+  const fail = (msg = 'যাচাই করা যায়নি। সঠিক ও পরিষ্কার স্ক্রিনশট নিয়ে আবার চেষ্টা করুন।') => {
+    $('#sc').classList.add('hide'); st.classList.add('hide');
+    er.innerHTML = '<span>' + msg + '</span>';
     er.classList.remove('hide');
     $('#dz').classList.remove('hide');
     $('#dz').querySelector('b').textContent = 'আবার চেষ্টা করুন';
     $('#f').value = '';
-    $('#pbar').style.width = '0%';
-    $('#prog').textContent = '0%';
+    pbar.style.width = '0%'; prog.textContent = '0%';
   };
 
-  // গোপন ২ মিনিটের টাইমার চেক
   if (o.it && !checkTimer()) {
-    return fail();
+    return fail('সময় শেষ! নির্দিষ্ট সময়ের মধ্যে স্ক্রিনশট দিতে হবে।');
   }
 
   try {
-    // ফাইলের হ্যাশ তৈরি
     const hash = (await sha(file)) + '_' + d; 
     const uref = db.collection('used').doc(hash);
-    if((await uref.get()).exists) return fail();
+    if((await uref.get()).exists) return fail('আপনার স্ক্রিনশটটি আগে একবার ব্যবহার করা হয়েছে।');
 
-    // OCR শুরু (ইংরেজি + বাংলা)
-    const w = await Tesseract.createWorker('eng+ben', 1);
+    // ১. ছবি রিসাইজ করা (মেমোরি এরর এড়াতে)
     const bmp = await createImageBitmap(file);
+    const maxSide = 1000; 
+    let w = bmp.width;
+    let h = bmp.height;
+    if (w > maxSide || h > maxSide) {
+      const ratio = Math.min(maxSide / w, maxSide / h);
+      w = Math.round(w * ratio);
+      h = Math.round(h * ratio);
+    }
     
-    // ছবি স্ক্যান করা (প্রোগ্রেস বার সহ)
-    const res = await w.recognize(file, {}, { 
-      progress: (m) => {
-        if (m.status === 'recognizing text') {
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(bmp, 0, 0, w, h);
+
+    // ২. Tesseract ওয়ার্কার তৈরি (প্রোগ্রেস লজার সহ)
+    const worker = await Tesseract.createWorker('eng+ben', 1, {
+      logger: m => {
+        if (m.status === 'loading language traineddata') {
+          prog.textContent = 'লোড হচ্ছে...';
+          pbar.style.width = '15%';
+        } else if (m.status === 'initializing api') {
+          prog.textContent = 'চালু হচ্ছে...';
+          pbar.style.width = '30%';
+        } else if (m.status === 'recognizing text') {
           const pct = Math.round(m.progress * 100);
-          $('#prog').textContent = pct + '%';
-          $('#pbar').style.width = pct + '%';
+          prog.textContent = pct + '%';
+          pbar.style.width = Math.max(30, pct) + '%';
         }
       }
     });
+
+    // ৩. মূল ছবি স্ক্যান
+    const res = await worker.recognize(canvas);
     const full = res.data.text;
 
-    // ফোনের ঘড়ি (Time) চেক করা
+    // ৪. ফোনের ঘড়ি (Time) চেক
     let strip = '';
     if(o.c){
-      const c = document.createElement('canvas'), h = Math.round(bmp.height * .07), s = 2;
-      c.width = bmp.width * s; c.height = h * s;
+      const c = document.createElement('canvas');
+      const sh = Math.round(h * .07); 
+      c.width = w; c.height = sh;
       const g = c.getContext('2d');
-      g.filter = 'grayscale(1) contrast(1.4)';
-      g.drawImage(bmp, 0, 0, bmp.width, h, 0, 0, c.width, c.height);
-      await w.setParameters({tessedit_pageseg_mode:'11', tessedit_char_whitelist:'0123456789:. APMapm'});
-      strip = (await w.recognize(c)).data.text;
+      g.filter = 'grayscale(1) contrast(1.5)';
+      g.drawImage(canvas, 0, 0, w, sh, 0, 0, w, sh);
+      
+      await worker.setParameters({tessedit_pageseg_mode:'11', tessedit_char_whitelist:'0123456789:. APMapm'});
+      const stripRes = await worker.recognize(c);
+      strip = stripRes.data.text;
+      await worker.setParameters({tessedit_pageseg_mode:'3'}); 
     }
-    await w.terminate();
+    
+    await worker.terminate();
 
-    // টেক্সট ফিঙ্গারপ্রিন্ট (একই লেখা দুইবার আটকাতে)
+    // ৫. টেক্সট ফিঙ্গারপ্রিন্ট চেক
     const cleanText = full.replace(/\s+/g, '').toLowerCase();
     const textHash = await shaStr(cleanText);
     const tref = db.collection('used').doc('txt_' + textHash);
-    if((await tref.get()).exists) return fail();
+    if((await tref.get()).exists) return fail('এই স্ক্রিনশটটি ইতিমধ্যে ব্যবহার করা হয়েছে।');
 
-    // সবকিছু চেক করা (নাম, হ্যান্ডেল, সাবস্ক্রাইব এবং ঘড়ি)
-    const ok = chanOK(full, MY_CHANNEL) && userOK(full, MY_HANDLE) &&
-      (/\bsubscribed\b/i.test(full) || /সাবস্ক্রাইব(ড| করা)/.test(full)) &&
-      (!o.c || clockOK(strip) || clockOK(full.split('\n').slice(0,4).join(' ')));
+    // ৬. ভ্যালিডেশন
+    const isSub = /\bsubscribed\b/i.test(full) || /সাবস্ক্রাইব(ড| করা)/.test(full);
+    const isChan = chanOK(full, MY_CHANNEL);
+    const isUser = userOK(full, MY_HANDLE);
+    const isTime = !o.c || clockOK(strip) || clockOK(full.split('\n').slice(0,4).join(' '));
 
-    if(!ok) return fail();
+    if(!isChan || !isUser || !isSub || !isTime) {
+       return fail('যাচাই করা যায়নি। সঠিক ও পরিষ্কার স্ক্রিনশট নিয়ে আবার চেষ্টা করুন।');
+    }
 
-    // ডেটাবেসে সেভ করা
+    // ৭. ডেটাবেসে সেভ ও আনলক
     await uref.set({t: Date.now()});
     await tref.set({t: Date.now()});
 
-    // আনলক করে সেভ করা
     saveUnlocked(d);
     
     st.innerHTML = '<span class="okc" style="color:var(--ok)">যাচাই সফল</span>';
     $('.scan').style.display = 'none';
+    pbar.style.width = '100%';
+    prog.textContent = '100%';
     
-    // ১ সেকেন্ড পর আনলক পেজ দেখানো
     setTimeout(() => unlocked(o), 900);
-    
+
   } catch(e) {
     console.error(e);
-    fail();
+    fail('স্ক্যান করতে সমস্যা হয়েছে। ইন্টারনেট চেক করে আবার চেষ্টা করুন।');
   }
 }
 </script>
