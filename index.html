@@ -569,9 +569,23 @@ async function verify(o, file){
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext('2d');
-    
-    // invert(1) বাদ দেওয়া হলো, শুধু গ্রে-স্কেল ও কন্ট্রাস্ট
-    ctx.filter = 'grayscale(1) contrast(1.8)';
+
+    // ডার্ক মোড স্ক্রিনশট কিনা চেক করা হচ্ছে (গড় ব্রাইটনেস মেপে)
+    const sampleSize = 40;
+    const sc = document.createElement('canvas');
+    sc.width = sampleSize; sc.height = sampleSize;
+    const sctx = sc.getContext('2d');
+    sctx.drawImage(bmp, 0, 0, sampleSize, sampleSize);
+    const pix = sctx.getImageData(0, 0, sampleSize, sampleSize).data;
+    let total = 0;
+    for (let i = 0; i < pix.length; i += 4) {
+      total += (pix[i] * 0.299 + pix[i+1] * 0.587 + pix[i+2] * 0.114);
+    }
+    const avgBrightness = total / (pix.length / 4);
+    const isDark = avgBrightness < 128;
+
+    // ডার্ক মোড হলে ইনভার্ট করে তারপর গ্রে-স্কেল ও কন্ট্রাস্ট, নাহলে শুধু গ্রে-স্কেল ও কন্ট্রাস্ট
+    ctx.filter = isDark ? 'invert(1) grayscale(1) contrast(1.8)' : 'grayscale(1) contrast(1.8)';
     ctx.drawImage(bmp, 0, 0, w, h);
 
     const worker = await Tesseract.createWorker('eng+ben', 1, {
@@ -621,16 +635,19 @@ async function verify(o, file){
     const isUser = userOK(full, MY_HANDLE);
     const isTime = !o.c || clockOK(strip) || clockOK(full);
 
-    if(!isChan || !isUser || !isSub || !isTime) {
+    // চ্যানেলের নাম বা ইউজারনেম - এই দুটোর যেকোনো একটা মিললেই চলবে
+    // (@হ্যান্ডেলের মতো ছোট লেখা OCR প্রায়ই মিস করে, কিন্তু দুটোই একই চ্যানেল বোঝায়)
+    const isIdent = isChan || isUser;
+
+    if(!isIdent || !isSub || !isTime) {
        let debugMsg = "❌ ভেরিফিকেশন ফেইল করেছে!\n\n";
-       if(!isChan) debugMsg += "• চ্যানেলের নাম (IQ Growth) পাওয়া যায়নি।\n";
-       if(!isUser) debugMsg += "• ইউজারনেম (@iqimproved) পাওয়া যায়নি।\n";
-       if(!isSub) debugMsg += "• Subscribed লেখাটি পাওয়া যায়নি।\n";
-       if(!isTime) debugMsg += "• ফোনের সময় (Clock) মেলেনি বা ২ মিনিট পার হয়েছে।\n";
-       debugMsg += "\n\n🤖 OCR যা পড়েছে:\n" + full.substring(0, 150) + "...";
+       if(!isIdent) debugMsg += "• চ্যানেলের নাম (IQ Growth) বা ইউজারনেম (@iqimproved) কোনোটাই পাওয়া যায়নি।\n";
+       if(!isSub) debugMsg += "• Subscribed লেখাটি পাওয়া যায়নি।\n";
+       if(!isTime) debugMsg += "• ফোনের সময় (Clock) মেলেনি বা ২ মিনিট পার হয়েছে।\n";
+       debugMsg += "\n\n🤖 OCR যা পড়েছে:\n" + full.substring(0, 150) + "...";
        alert(debugMsg);
        
-       return fail('যাচাই করা যায়নি। সঠিক ও পরিষ্কার স্ক্রিনশট নিয়ে আবার চেষ্টা করুন।');
+       return fail('যাচাই করা যায়নি। সঠিক ও পরিষ্কার স্ক্রিনশট নিয়ে আবার চেষ্টা করুন।');
     }
 
     await uref.set({t: Date.now()});
